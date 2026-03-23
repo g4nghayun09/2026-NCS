@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+<body>
+    <script>
+        // 객체
+        // - 파이썬의 딕셔너리와 유사하다.
+        // - 용도는 관련있는 데이터를 하나로 담기 위해 사용한다.
+        // - { }
+        // - { 키(key) : 값(value) }
+        // - 키 값은 유일하다. (즉 하나 밖에 없음)
+        // - 키 값은 문자열이다.
+        // - 값 : 문자열, 숫자, boolean, [](배열), {}(객체)......
+        // - 순서가 반드시 유지되는 것은 아니다. (그러나
+        // ES6이후 가급적 유지하려고 노력한다. )
+
+        let student = {
+            name : "강하윤",
+            age : 17,
+            phone : "010-1111-2222",
+            address : "서울시 관악구",
+        };
+        // 키에 숫자가 올 수 없다. 숫자로 넣어도 문자열로 인식함.
+        let person = {
+            111 : "모두 1",
+            222 : "모두 2",
+        };
+
+        console.log(student); // 객체 타입으로 나옴.
+        console.log(person); // 객체 타입으로 나옴.
+        // 2. 키 값을 가져오는 함수 : Object.keys()
+        let keys = Object.keys(person);
+        console.log(keys); // 문자열로 나옴. 리턴 타입 배열로 나옴.
+        console.log(keys[0]);
+        keys = Object.keys(student);
+        console.log(keys);
+        console.log(keys[0]); // 이렇게 배열 형식으로 인덱스를 가지고 출력할 수 있음.
+        
+        // 3. 값을 가져오기 : 객체명.key
+        // 객체 속에 name과 그냥 변수 name은 다름 위에 거 보면 암.
+        // 왜? : 변수 scope 즉 변수가 힘을 미칠 수 있는 범위. 
+        // 
+        let name = student.name;
+        console.log(name);
+
+        // 4. 객체의 값 변경 : 객체명.키 = 값
+        student.name = "강하늘";
+        console.log(student);
+
+        // 5. 객체에 새로운 키와 값 추가 : 객체명.키 = 값
+        student.bloodType = "AB";
+        console.log(student);
+
+        // 6. 객체를 생성하는 다른 방법 
+        let person2 = {};
+        person2.name = "유재석";
+        person2.age = 50;
+
+        // 7. Object의 특정 키에 접근하는 방법 (중요!!!!!!)
+        //  --> 
+        console.log(student.bloodType);
+        console.log(student["bloodType"]);
+        // 사용자가 알고 있지 않을 때 사용함.
+        // 다 같은 값이 나옴 --> 하지만 아래 것을 실제로 많이 사용함. 즉 현업에서 많이 사용.
+
+        let userInputKey = prompt("알고 싶은 정보??(name, age, phone, address, bloodType)");
+        if(userInputKey)
+            console.log(userInputKey, " : ", student[userInputKey]);
+
+    </script>
+<!-- 
+이제 게임을 접어야함
+이제 생기부가 비슷비슷함. 그럼 학교생활에 최선을 다해야함.
+취업을 위해서는 포폴이 좋아야함. 자소서는 풍부하고 아름다워야함.
+이 두가지를 다해야함. 교내활동으로는 힘듬. 즉 공모전을 많이 나가야함. 결과 보다는 경험이 중요함.
+경험들을 자소서에 작성. 이러한 경험을 바탕으로 잘 해보겠다. 그런식으로 써야함. 수상을 못하더라도 나가야함.
+선취업 후진학하려면 교내활동을 잘 해야함. 생기부 대학을 가면 성취평가제임(5등급제) 변별력이 없음. 
+오직 세특, 행발임.
+세특은 각과목 쌤이 작성해주심. 그래서 전공쌤이 잘 써주셔야함. 행발은 담임쌤이 작성하심. 대학들이 이걸로 봄
+입시지도를 많이 해본 샘이 설명함. 성적은 변별력이 없음. 그래서 위의 2가지가 정말로 중요함. 이 2가지를 잘하면서 게임을 한다? 이것은 불가능함.
+그래서 게임을 하지말아야함. 지금 1년이 10년을 좌지우지함. 게임, 담배는 안좋은 거임. 절대로 못끊음. 지금은 모름. 당연히. 지금은 이성보다 본능이 앞섬.
+게임은 끊을 수 있을 때 끊어라!!!
+
+md 파일 깃허브에 올리기
+-->
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        변수 선언 : 데이터 타입 선언 x, var, let, const 이거 3가지를 가지고 하면 됨.
+
+        1. var 
+            - ES6 이전부터 존재함. 굉장히 오래됨.
+            - 재선언(동일한 이름으로 재선언이 가능), 재할당(값을 바꾸는 것) 가능.
+            - 주로 전역변수에 사용. => 권장x(덮어쓰기 기능 때문에)
+
+
+        */
+
+       var studentName = "2학년 1반";
+       console.log(studentName);
+       studentName = "2학년 3반"; // 재선언 가능
+       console.log(studentName);
+       studentName = "2학년 2반"; // 재할당 가능
+       console.log(studentName);
+       
+       var x = 8;
+       var y = 9;
+       var z = x+y;
+       console.log("Z : ", z);
+
+       var x = 10; // 재선언
+       y = 11; // 재할당
+       z = x - y;
+       console.log("Z : ", z);
+
+       /*
+       2. let
+       */
+
+      //let x = 5;
+      //console.log(x); // 실행과정에서 에러가 나는 거임. run time 에러.
+      // Uncaught SyntaxError: Identifier 'x' has already been declared
+
+      let x1 = 10;
+      let y1 = 11;
+      let z1 = x1 + y1;
+      console.log("Z1 : ", z1);
+
+      //let x1 = 9; 재선언 불가 -> syntax 에러(선언할 때 나옴. 잡기 편함.)
+
+      x1 = 26;
+      z1 = x1 + y1;
+      console.log("Z1 : ", z1);
+
+      /*
+       3. const
+        상수값에 사용. 
+      */
+      
+    //   const PI = 3.14;
+    //   PI = 3;
+    //   console.log(PI);
+      // Uncaught TypeError: Assignment to constant variable
+      // 오류에는 예상치 못한것과 예외가 있음(Exeption) 이번 상황에는 예외임.
+      
+      const korea_dateFormat = "YYYY-MM-DD";
+      const usa_dateFormat = "DD-MM-YYYY";
+
+    </script>
+</body>
+</html>

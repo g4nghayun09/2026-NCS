@@ -1,0 +1,32 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트의 삽입 위치</title>
+    <script>    
+    // 얘가 약간 자바의 System.out.println();이런 느낌임. 근데 아래의 코드에서 window는 주로 생략을 함.
+        window.document.write("Hello World - 3");
+    </script>
+</head>
+<body>
+    <!-- 자바스크립트의 삽입 
+
+    1. <head>
+    2. <body>
+    3. 외부 파일로 삽입 - 선호
+    4. 인라인(inline) - 비추천    
+
+    -->
+    <p>Hello World - 1</p>
+    <h2>Hello World - 2</h2>
+    <script>
+        document.write("Hello World - 4");
+    </script>
+    <script src="./js/01_js_location.js"></script>
+    <br>
+    <br>
+    <br>
+    <button onclick="frunctionMy()">클릭</button>
+</body>
+</html>

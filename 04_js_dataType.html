@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dataType</title>
+</head>
+
+<body>
+    <script>
+        // 1. 문자열 (String)
+        let name1 = "2학년 1반";
+        // let name2 = '2학년 3반';
+        let str1 = "너희는 '2학년 1반' 이야"; // 홑따옴표 나옴.
+        console.log(str1);
+        let str2 = '너희는 "2학년 1반" 이야'; // 이렇게 홑따옴표랑 쌍따옴표랑 바꾸면 이렇게 출력이 가능함. 
+        console.log(str2);
+        let str3 = "너희는 \"2학년 1반\" 이야"; // "을 중간에 넣고 싶으면 \을 쓰면됨. \: 이스케이프 문자.
+        console.log(str3);
+
+        // 문자열 합치기
+        let firstName = "John";
+        let lastName = "Bacon";
+        let fullName = firstName + lastName; // +가 합치는 의미임.
+        console.log(fullName);
+
+
+        // 2. 숫자형 (Number 객체)
+        // - 정수, 실수-0 다 포함,
+        // - 다양한 속성과 함수(메소드)가 제공됨.
+        // 특징 : 다른 언어와 달리 64비트 부동소수점 형식. - 연산시 오류가 가끔 발생.
+
+        let num1 = 13;
+        let num2 = 13.8; // 형식 차이 없이 다 씀.
+
+        console.log(Number.MAX_VALUE);
+        console.log(Number.MAX_SAFE_INTEGER);
+
+        // 정밀도 오차
+        let result = 0.1 + 0.2;
+
+        if (result === 0.3) {
+            console.log("정답");
+        } else {
+            console.log("오답");
+        }
+        console.log(result); // 정밀도 오차임. 0.30000000000000004이런 값이 나옴.
+
+        // 정밀도 오차 해결 방법
+        // 1. 정수로 변환 후 계산 : (0.1*10 + 0.2*10)/10
+        // 2. toFixed()사용 : (0.1 + 0.2).toFixed(1);
+        // 3. (현업) 다양한 라이브러리 사용. BigInt
+        console.log((0.1 * 10 + 0.2 * 10) / 10);
+        console.log((0.1 + 0.2).toFixed(1));
+
+        // 3. boolean (true, false)
+        let userInputAge = 17;
+        let adult = 20;
+        let isAdult = userInputAge >= adult;
+        console.log(isAdult);
+
+        // 4. undefiiend (중요)
+        // - 데이터 타입이자 데이터 값
+        // - 정의되지 않은, 값을 할당하지 않은 객체
+        // - 할당하지 않은 개발자의 실수가 있는 경우
+        // - 실행단계에서 브라우저 엔진이 자동으로 할당하는 값
+        // - 따라서 개발단계에서 수시로 개발자도구로 
+        // - undifiend가 발생하는지 체크!!
+        let a;
+        console.log(a);
+        // undefined : 에러가 나지 않음 -> 그래서 나오지 않게 하는게 중요!!
+
+        // 5. null
+        // - 없음을 의미하는 데이터 타입
+        // - 개발자가 실수가 아니라 일부러 설정하는 경우가 많음.
+        // - 선언시점에는 어떤 값이나 어떤 데이터 타입이 올지 정해지지 않은 경우
+        // - Garbage Collection (가비지 컬랙션 : 더 이상 사용하지 않는 데이터를 메모리에서 삭제)
+        let jsonData = "굉장히 큰 데이터";
+        // 처리완료
+        jsonData = null;
+
+        // 자바스크립트에서 항상 false로 간주하는 값 (6)
+        /*
+        false, undefined, null, 0, ""(빈문자열), NaN(not a number)
+        이거 이외에는 무조건 true로 간주함. 
+        이 위의 6개만 false로 봄.
+        */
+
+        // 입력이 있어야 "Hello"라고 출력하는 코드
+        // 입력 : window.prompt()
+        let userInput = prompt("이름을 입력하세요");
+        // 내 코드
+        if (userInput != "") {
+            console.log("Hello");
+        } else {
+            console.log("");
+        }
+
+        // 쌤 코드
+        if (userInput) {
+            console.log("Hello");
+        }
+
+    </script>
+</body>
+
+</html>
