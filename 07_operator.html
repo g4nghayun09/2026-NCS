@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>operator</title>
+</head>
+<body>
+    <script>
+        // 1. 할당 연산자 (= : 대입)
+        let x = 1;
+        let y = x; // 1
+
+        x = x+y; // 2
+        console.log(x);
+
+        x = x-y; // 1
+        console.log(x);
+
+        x = x*y; // 1
+        console.log(x);
+
+        x = x/y; // 1
+        console.log(x);
+
+        x = 5;
+        y = 2;
+        let z = x%y; // 나머지
+        console.log(z);
+
+        x = 3;
+        y = 2;
+        z = x ** y; // ** 제곱
+        console.log(z);
+        // 제곱근은 sqrt를 사용하면 됨.
+
+        // 2. 복합할당 연산자 : -=, +=, *=, /=, %=
+        x=3;
+        y=4;
+        
+        console.log(x+=y); // x = x + y => x를 출력 7
+
+        console.log(x-=y); // x = x - y => x를 출력 3
+
+        console.log(x*=y); // x = x * y => x를 출력 12
+
+        console.log(x/=y); // x = x / y => x를 출력 3
+        
+        console.log(x%=y); // x = x % y => x를 출력 3
+
+        // 3. 
+    </script>
+</body>
+</html>
