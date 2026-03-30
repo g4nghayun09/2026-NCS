@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if you</title>
+</head>
+<body>
+    <script>
+        // switch는 실무에서 많이 사용하지 않음. 
+        // switch는 메모리를 조금이라도 적게 사용할려고 만들었는데 
+        // 지금은 굳이 그럴 필요가 없어서 
+        // 거의 사용을 하지 않고 거의 사용을 하지않음.
+
+        let age = prompt("당신의 나이를 입력해주세요.");
+        let charge = "무료";
+        if(18<=age&&age<70) {
+            charge = 1000;
+        }
+        else if(18>age&&age>6) {
+            charge = 700;
+        }
+        else if(12>age&&age>6) {
+            charge = 450;
+        }
+        console.log(charge);
+    </script>
+</body>
+</html>

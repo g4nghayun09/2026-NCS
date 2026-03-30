@@ -48,7 +48,86 @@
         
         console.log(x%=y); // x = x % y => x를 출력 3
 
-        // 3. 
+        // 3. 비교연산자 : 데이터의 값을 비교
+        // > < >= <= == === != !==
+        x = 3;
+        console.log(typeof x);
+        y = "3";
+        console.log(typeof y);
+        // 보편적으로 ===(3개)를 씀.
+        console.log(x == y); // true, 값 비교 => 유연성 => 장점, 단점
+        console.log(x === y); // false, 타입 비교
+
+        // 나중에 조건을 가지고 할 때 어려울 수도 있음.
+        console.log(x != y); // false
+        console.log(x !== y); // true
+
+        // 4. 산술연산자 : ++(증가) --(감소) +(숫자화) -(단항부정) -- 이런거 시험문제에 나옴.!!!!!
+        x = 5;
+        y = ++x; // 여기서 x를 증가시킴. 증가시키고 y에 대입(할당)을 함.
+        console.log(x); // 6
+        console.log(y); // 6
+
+        x = 5;
+        y = x++; // 여기서 x를 증가시킴. 증가시키기 전에 y에 대입(할당)을 함.
+        console.log(x); // 6
+        console.log(y); // 5
+
+        y = --x; // 여기서 x를 감소함. 감소하고 y에 대입(할당)을 함.
+        console.log(x); // 5
+        console.log(y); // 5
+
+        y = x--; // 여기서 x를 감소함. 감소하기 전에 y에 대입(할당)을 함.
+        console.log(x); // 4
+        console.log(y); // 5
+
+        x = -3;
+        console.log(x); // -3
+        console.log(-x); // 3 -- -가 붙으면 부호가 바뀜. 즉 부호를 바꾸는 역할!!
+
+        x = "7";
+        y = +x;
+        console.log(typeof x); // string
+        console.log(typeof y); // number
+        console.log(x); // 7
+        console.log(y); // 7
+        console.log(x === y); // false
+
+        // prompt로 두 수를 입력받아 합을 구하는 코드 작성
+        // let num1 = +prompt("첫번째 숫자 작성 : "); 
+        // let num2 = +prompt("두번째 숫자 작성 : "); 
+        // console.log(num1 + num2);
+
+        // 5. 논리연산자 : 여러 조건이 함께 있을 때 참인지 거짓인지 판단하는 연산자.
+        // ... &&(and : 둘 다 참) ||(or : 둘 중에 하나라도 참이면 참)
+        // && : 2개인 이유는 효율이 높아서임. &는 조건 2개 다 봄. 하지만 &&는 더 똑똑한 느낌임. 만약 &&이런 상황에서 처음이 false면 바로 false로 함.
+        // 연산자 하나짜리를 사용하는 이유 : 첫항만 보고도 판단 가능
+        let o = true && false; // false
+        o = 3 > 2 && 4 > 7; // false
+        o = 3 > 2 && 8 > 7; // true
+        o = true || false; // true
+        o = 3 > 2 || 4 > 7; // true
+        o = 3 > 4 || 4 < 2 || 2 > 1; // js에서만 가능(java에서 신텍스에러남.) true
+
+        // 6. 문자열 연산자 : + (concat)
+        let firstName = "Jhon";
+        let lastName = "Bacon";
+        let fullName = firstName + lastName;
+        console.log(fullName);
+
+        // 삼항연산자 : 조건 ? 참 : 거짓;
+        let age = 16;
+        let isAdult = age >= 20 ? "성인" : "미성년자";
+        console.log(isAdult);
+
+        // 활용 : 90점 이상이면 "A", 80점 이상이면 "B", 70점 이상이면 "C", 60점 이상이면 "D", 모두아니면 "E"
+        // let score = prompt("당신의 점수를 입력해주세요.");
+        // // 삼항 연산자는 중첩이 가능하다. 실무에서는 많이 사용하지 않음. 가독성이 떨어짐. 
+        // let isScore = score>=90 ? "A" : score>=80 ? "B" : score>=70 ? "C" : score>=60 ? "D" : "E"; 
+        // console.log(typeof score);  
+        // console.log(isScore);
+
+        
     </script>
 </body>
 </html>
