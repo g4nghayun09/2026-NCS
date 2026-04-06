@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for_in</title>
+</head>
+<body>
+    <script>
+        let brands = ["애플", "구글", "마이크로소프트", "삼성", "아마존", "테슬라", "윈터"];
+        // for ~ in : 객체에서 많이 사용, 배열에서 사용할 경우 => 초기화, 조건, 증가식이 없어도 
+        // 순회를 한다.
+        for(const i in brands) {
+            console.log(i); // 인덱스가 나옴
+            console.log(brands[i]); // 값이 나옴. 
+        }
+    </script>
+</body>
+</html>

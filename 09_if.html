@@ -3,27 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>if you</title>
+    <title>if</title>
 </head>
 <body>
     <script>
         // switch는 실무에서 많이 사용하지 않음. 
         // switch는 메모리를 조금이라도 적게 사용할려고 만들었는데 
         // 지금은 굳이 그럴 필요가 없어서 
-        // 거의 사용을 하지 않고 거의 사용을 하지않음.
+        // 거의 사용을 하지 않음.
 
-        let age = prompt("당신의 나이를 입력해주세요.");
-        let charge = "무료";
-        if(18<=age&&age<70) {
-            charge = 1000;
+        let age = +prompt("당신의 나이를 입력해주세요.");
+        let charge = "나이를 입력해주세요";
+
+        if(age) {
+            if(age<=6) {
+                charge = "무료";
+            } 
+            else if(age<12) {
+                charge = "450원";
+            }
+            else if(age<18) {
+                charge = "700원";
+            }
+            else if(age<70) {
+                charge = "1000원";
+            }
+            else if(age>=70){
+                charge = "무료"
+            }
+            else if(age) {
+                charge = "나이를 입력해주세요";
+            }
         }
-        else if(18>age&&age>6) {
-            charge = 700;
-        }
-        else if(12>age&&age>6) {
-            charge = 450;
-        }
-        console.log(charge);
+        
+        console.log("당신의 요금은  "+charge+"입니다.");
     </script>
 </body>
 </html>

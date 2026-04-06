@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switch</title>
+</head>
+<body>
+    <script>
+        // switch
+        // - Date() 객체 : 날짜와 시간을 다루는 객체
+
+        // Date() 객체를 통해서 now라는 인스턴스 객체 생성
+        // 여기서 GMT+0900은 런던을 기준으로 9시간 빠르다. 
+        // get은 값을 가져오고 set은 초기화
+        const now = new Date();
+        //console.log(now); // 결과 : Tue Mar 31 2026 13:45:20 GMT+0900 (한국 표준시)
+        // 여기서는 요일의 데이터를 리턴 월요일 : 1, 일요일 : 0
+        
+        let dayName = now.getDay() ;
+        //console.log(d);
+        let day = "";
+        // break : 조건 || 반복문을 빠져나오는 것
+        switch(dayName) {
+            case 0 : 
+                day = "일";
+                break;
+            case 1 : 
+                day = "월";
+                break;
+            case 2 : 
+                day = "화";
+                break;
+            case 3 : 
+                day = "수";
+                break;
+            case 4 : 
+                day = "목";
+                break;
+            case 5 : 
+                day = "금";
+                break;
+            case 6 : 
+                day = "토";
+                break;
+            default : 
+                console.log(dayName+"은 요일이 아닙니다.");
+                day = "존재하지 않는";                           
+        } 
+        console.log("오늘은 "+day+"요일 입니다.");  
+        
+        let dayArr = ["일", "월", "화", "수", "목", "금", "토"];
+        console.log("오늘은 "+dayArr[new Date().getDay()]+"요일 입니다.");
+    </script>
+</body>
+</html>

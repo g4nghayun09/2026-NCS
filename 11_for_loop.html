@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for</title>
+</head>
+<body>
+    <script>
+        let brands = ["애플", "구글", "마이크로소프트", "삼성", "아마존", "테슬라", "윈터"];
+        for(let i=0; i<brands.length; i++) {
+            console.log(brands[i]);
+        }
+
+        // 실습 : 자판기에서 음료를 구하는 프로그램
+        const drinkList = [
+            {name : "오렌지", price : 1000},
+            {name : "파워에이드", price : 1200},
+            {name : "커피", price : 700},
+            {name : "보리음료", price : 1200},
+            {name : "코카콜라", price : 1800},
+        ];
+        let inputCoin = 1000;
+        let availableDrink = []; // 구입가능한 음료수 목록 배열
+        for(let i=0; i<drinkList.length; i++) {
+            if(inputCoin >= drinkList[i].price) {
+                console.log("가격이 "+drinkList[i].price+"원인 "+drinkList[i].name+"를 구매할 수 있습니다.");
+                availableDrink.push(drinkList[i]);
+            }
+        }
+        console.log("자판기에서 구매할 수 있는 음료의 목록 : ");
+        console.log(availableDrink);
+        // break; : 5에서 중단
+        for(let i=0; i<10; i++) {
+            if(i==5) {
+                break;
+            }
+            console.log(i);
+        }
+        // continue; : 5빼고 함.
+        for(let i=0; i<10; i++) {
+            if(i==5) {
+                continue;
+            }
+            console.log(i);
+        }
+
+        
+    </script>
+</body>
+</html>
