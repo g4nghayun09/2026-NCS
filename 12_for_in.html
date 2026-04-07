@@ -14,6 +14,41 @@
             console.log(i); // 인덱스가 나옴
             console.log(brands[i]); // 값이 나옴. 
         }
+        // 2. 객체에서 사용
+        let person = {
+            name : "공은성",
+            age : 17,
+            height : 160,
+            tel : "010-0000-1111",
+            city : "Seoul",
+        };
+        // 2-1. 키출력
+        for(const key in person) {
+            console.log(key);
+        }
+        // 2-2. 값출력 
+        for(const key in person) {
+            console.log(person[key]);
+        }
+
+
+        // 알고 싶은 키를 입력받고, 키에 대한 값을 출력하는 코드 (빈칸 거르기)
+        let userKey = prompt("알고 싶은 키를 입력해주세요! (name, age, height, tel, city)");
+        let exist = true;
+        if(!userKey) {
+            console.log("아무것도 입력하지 않았습니다.");
+        }
+        else {
+            for(const key in person) {
+                if(key === userKey) {
+                    console.log(userKey+"에 해당하는 값은 "+person[key]+"입니다.");
+                    exist = false;
+                }
+            }       
+            if(exist){
+                console.log(userKey+"에 해당하는 값은 없습니다.");
+            }
+        }
     </script>
 </body>
 </html>
