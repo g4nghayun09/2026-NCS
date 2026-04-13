@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while</title>
+</head>
+<body>
+    <script>
+        // 조건이 참인 동안 반복, 무한루프에 빠지지않도록 조심.
+        // 1. while문은 조건에 따라서 한번도 실행하지 않을 수 있다.
+
+        let i = 1;  // i가 나오면 반복문이 나온다고 알아두면 편함.
+
+        while(i <= 10) {
+            console.log(i);
+            i++;
+        }
+
+        while(i <= 10) {
+            console.log(i);
+            i++;
+        }
+
+        // 2. do~while : 무조건 한 번은 실행한다.
+        // 조건이 거짓이어도 한 번은 실행한다.
+
+        do{
+            console.log(i);
+            i++;
+        }while(i<=20);
+        
+        // 동전을 교환하는 코드 작성
+        // 돈을 입력 받으면 coinUnit로 바꿔주는 코드
+        let inputCoin = 8900;
+        let coinUnit = 500; // 17개, 400
+
+        let userCoin = coinUnit;    
+        let cnt = 0;
+        // 계속 더하는 방식
+        while(userCoin <= inputCoin) {
+            userCoin += coinUnit;
+            cnt++;
+        }
+        console.log(coinUnit+"원 짜리 동전 "+cnt+"만큼 필요합니다.");
+        if(inputCoin%coinUnit!=0) {
+            console.log("거스름돈은 "+(inputCoin-(coinUnit*cnt))+"원입니다.");
+        }
+        else {
+            console.log("거스름돈이 없습니다.");
+        }
+    </script>
+</body>
+</html>
