@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>string_object</title>
+</head>
+<body>
+    <script>
+        // String 내장 함수
+        // 1. 속성 (Property) : length
+
+        let str = "Welcome Seoul"; // 공백도 문자열에 포함됨.
+        console.log(str.length); // 0 ~ 12
+
+        // 2. indexOf(대상, 시작위치) : 찾고자 하는 문자열의 시작 인덱스 리턴 
+        // 찾고자 하는 대상이 없으면 리턴은 -1
+        console.log(str.indexOf("Seoul")); // 8
+        str = "Welcome Seoul Seoul";
+        // (여러개라면 첫번째)
+        console.log(str.indexOf("Seoul", str.indexOf("Seoul")+1)); // 14
+        console.log(str.indexOf("Jeju")); // -1
+
+        // 활용 : 전화번호 입력 시 - 없이 입력 => - 있다면 에러 메시지 출력
+        let tel = "010-0000-8809";
+        console.log(tel.indexOf("-")); // -1
+        if(tel.indexOf("-") != -1) {
+            console.log("전화번호에 -없이 입력해주세요.");
+        }
+        else {
+            console.log("전화번호가 입력되었습니다.")
+        }
+
+        // 3. lastIndexOf() : 뒤에서 부터 문자열을 찾아서 리턴 (여러개라면 첫 문자열)
+        console.log(str.lastIndexOf("Seoul")); // 14
+
+        // 4. slice() : 문자열을 (시작위치, 마지막위치-1)만큼 잘라내기. 
+        str = "Welcome Seoul";
+        console.log(str.slice(8, 13)); // Seoul => 인덱스를 기준으로 생각하면 편함.
+
+        // seoul이 어디에 있는지 몰라
+        console.log(str.slice(str.indexOf("Seoul")));
+        console.log(str.slice(-5)); // Seoul => 뒤에서 부터 5만큼 잘라라
+        console.log(str.slice(-5, -2)); // Seo => -5, -4, -3    
+
+        // 5. subString() : 문자열을 (시작위치, 마지막위치-1)만큼 잘라내기. 
+        // -지원을 안함 => 0
+        str = "Welcome Seoul";
+        console.log(str.substring(8, 13));
+        console.log(str.substring(8));
+        console.log(str.substring(-5)); // str.subString(0)
+        console.log(str.substring(-5, -2)); // 지원을 하지 않음.
+
+        // 6. substr() : 문자열을 (시작위치, 길이)만큼 잘라내기.
+        // 잘라낼 길이를 아는 경우 매우 효율적 : 
+        
+        let nowDate = "20260420";
+        let year = nowDate.substr(0, 4);
+        let month = nowDate.substr(4, 2);
+        let date = nowDate.substr(6, 2);
+        console.log(year, month, date);
+        // slice vs substring vs substr
+        /*
+        slice : 가장 유연하고 현대적인 메서드, 음수처리가 가능. 실무에서 쓸 가능성 있음.
+        substring : slice와 유사하지만 인덱스가 음인 경우 처리가 다르다
+        substr : 인덱스가 아닌 글자 수를 기준으로 하지만 현재 웹표준으로 권장하지 않는다.
+        */
+
+        // 7. replace(str1, str2) : str1을 str2로 교체하는 함수
+        str = "Welcome Jeju! Jeju"; 
+        console.log(str.replace("Jeju", "Seoul"));      
+
+        // 8. toUpperCase() : 대문자로 변환
+        console.log("toUpperCase : "+str.toUpperCase());
+
+        // 9. toLowerCase() : 소문자로 변환
+        console.log("toLowerCase : "+   str.toLowerCase());
+
+        // 사용자가 당양하게 입력하게 되므로...... 
+        // (프론트엔드) 입력된 내용을 대(소)문자로 변환하면 된다.
+
+        // 10. concat() : 여러 문자열 합치기, 문자열의 갯수에는 재한이 없다.
+        let firstName = 'John';
+        let lastName = "Doe";
+        let fullName = firstName.concat(lastName);              
+        console.log(fullName);  
+
+        // 11. trim() : 문자열의 앞, 뒤 공백을 없애기
+        let name = "   에이스   1반   ";
+        console.log(name.trim());
+
+        // **12. padStart(문자열 전체 길이, 채울 문자열) : 현업에서 가장 많이 사용하는 함수 중 하나**
+        // 특정 문자로 앞을 채운다.
+        // 월을 입력받아, 월이 한자리인 경우 "0"을 붙여서 출력 (포멧을 맞추기 위해)
+
+        // month = prompt("현재의 월을 입력해주세요.");
+        month = 4;
+        if(1<=month && month<=12) {
+            if(month<10) {
+                month = "0"+month;
+            }
+            console.log("지금은 "+month+"월 입니다.");
+        }
+        else {
+            console.log("존재하는 월이 아닙니다.");
+        }
+
+        console.log(month.padStart(2, "0"));
+
+        // 13. padEnd(문자열 전체 길이, 뒤에 채울 문자열) : 거의 사용하지 않는다.
+         
+    </script>
+</body>
+</html>

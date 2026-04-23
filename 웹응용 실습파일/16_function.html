@@ -28,6 +28,63 @@
        console.log("당신의 세금은 "+taxAmount(123456));
 
        console.log(getTop5());
+
+       // 2. 함수 표현식 : 변수에 함수를 할당, 변수명이 함수명처럼 사용, 선언전에 사용이 불가능
+       const sum2 = function(n1, n2) {
+        return n1+n2;
+       }
+       console.log(sum2(3,4));
+       
+       // 3. 화살표 함수
+       // - 실무에서 가장 많이 사용
+       // - 변수에 함수를 할당, 변수명이 함수명처럼 사용
+       // - function 사용 안함, (매개변수) => {}
+       // - return 문이 있고 한 줄로 되어있다면 return 과 {} 생략가능
+
+       // 아래의 코드는 람다식처럼 보일 수 있음. => 시니어 개발자는 싫어할 수 있음.
+       const sum3 = (n1, n2) => n1+n2; 
+       console.log(sum3(3,34));
+
+       const test = (productPrice) => {
+        let tax = 0.1;
+        return productPrice * tax;
+       };
+
+       const getTop = () => {
+        return ["이재용", "윈터", "손흥민", "류현진", "강하윤"];
+       };
+
+       // 4. Function()
+       // new Function("", "", ""......) => 마지막 문자열이 코드, 앞에 것들은 매게변수임.
+       // 숫자 2개 연사자를 입력 받아 연산을 실행하는 함수 (calculator)를 작성해보자. 
+
+       const calculator2 = new Function("n1", "n2", "return n1 + n2");
+       console.log("calculator2 : "+calculator2(3,4));
+
+       let n1 = 9;
+       let n2 = 63;
+       let op = "+";
+
+       const calculator = function (num1, num2, op) {
+        switch(op) {
+            case("+"): 
+                return num1 + num2; 
+            case("-"): 
+                return num1 - num2; 
+            case("/"): 
+                return num1 / num2; 
+            case("%"): 
+                return num1 % num2; 
+            case("*"): 
+                return num1 * num2; 
+            default: 
+                return "오류발생, 연산자가 아닙니다.";
+        }
+       }
+       console.log("calculator : "+n1+"와 "+n2+"을 "+op+"한 값은 "+calculator(n1, n2, op)+"입니다.");
+
+       const calculator3 = new Function("n1", "n2", "return n1" + op + "n2");
+       console.log("calculator3 : "+calculator3(2, 3));
     </script>
 </body>
 </html>
