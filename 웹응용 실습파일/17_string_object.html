@@ -108,7 +108,38 @@
         console.log(month.padStart(2, "0"));
 
         // 13. padEnd(문자열 전체 길이, 뒤에 채울 문자열) : 거의 사용하지 않는다.
-         
+        // 14. charAt(인덱스값) : 인덱스에 해당하는 글자 하나를 리턴
+        str = "A00001";
+        if(str.charAt(0)=='A') {
+            console.log("관리자님 환영합니다.");
+        }
+        // 15. charCodeAt(인덱스) : 인덱스에 해당하는 글자 유니코드를 리턴
+        str = "힣";
+        console.log(str.charCodeAt(0));
+        str = "가";
+        console.log(str.charCodeAt(0));
+        str = "A00001";
+        console.log(str.charCodeAt(0));
+
+        // (정말 중요함) 16. split : 파라미터로 전달받은 문자열을 기준으로 문자열을 쪼갠다.
+        // return 타입은 배열이다. 그래서 배열에서도 split이 나옴.
+        let emails = "s2556@gmail.com,khydino@gmail.com,winter@gmail.com";  // 서버로부터 json형식으로 이메일이 전송되어 온다고 가정하자.
+        let email = emails.split(","); // 형태가 배열임.
+        console.log(email);
+
+        // 17. **startsWith() : 파라미터로 시작하는지 여부를 boolean으로 반환
+        let url = "website.com";
+        // https:// 위의 주소가 적절한 웹사이트 주소인지 판별해보기.  
+        // url.startsWith("https://") ==   url.slice(0, 8) === "https://"
+        if(url.slice(0, 8) === "https://") {
+            console.log(url+"은 적절한 웹사이트 입니다.");
+        }
+        else {
+            console.log(url+"은 부적절한 웹사이트 입니다.");
+        }
+        console.log(url.startsWith("https://"));
+
+        // 18. endWith() : 파라미터로 종료하는지 여부를 boolean으로 반환
     </script>
 </body>
 </html>
