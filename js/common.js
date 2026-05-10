@@ -15,3 +15,11 @@ function taxAmount(productPrice) {
 function getTop5() {
     return ["이재용", "윈터", "손흥민", "류현진", "강하윤"];
 }
+
+/**
+ * 나는야 슈퍼 귀요미
+ * @returns 
+ */
+function cutie() {
+    return "아잉";
+}
