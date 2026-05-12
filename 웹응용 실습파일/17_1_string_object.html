@@ -4,15 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1_string_object</title>
-</head>
+</head> 
 <body>
     <script>
-        // 1. slice실무 활용 예제
-        // 2. replace실무 활용 예제 (with 정규식)
-        // 3. padStart실무 활용 예제
-        // 4. charAt 실무 활용 예제
-        // 5. split 실무 활용 예제
-        // 6. endsWith 실무 활용 예제
+    // 1. slice실무 활용 예제
+        // 1-1 긴 텍스트를 "더보기"처리 
+        const longString = "자바스크립트 실무 마스터 : 기초에서 심화까지 한 번에 끝내기";
+
+        const truncateTitle = (title, maxLength) =>{
+            if(title.length > maxLength) {
+                return title.slice(0, maxLength) + "......";
+            }
+            return title;
+        }
+        console.log(truncateTitle(longString, 10));
+        // 1-2 전화 번호 뒷자리 **** 로 마스킹 처리
+        let phoneNumber = "010-1234-5678";
+
+        const hiddenNumber = phoneNumber.slice(0, 9) + "****"; // 여기에서 9말고 -4하는게 더 정확함. 즉 슬라이스를 앞에서도 할 수 있고 뒤에서도 할 수 있음.
+        console.log(hiddenNumber); // 010-1234-****
+        
+    // 2. replace실무 활용 예제 (with 정규식(regular expression)) 정규식 중요함.
+        /* 정규식
+            - // 사이에 작성
+            -  \는 아니다의 의미
+            - D는 숫자를 의미. => \D는 숫자가 아닌 것 ,숫자를 의미하는게 하나가 아님.
+            - option : g => 모두 바꿔라
+        */
+        // 2-1 전화번호를 입렵받아 db에 저장 => 01021345678
+        phoneNumber = "010-1234-5678";
+        
+        const clearNumber = (phoneNumber)=>{
+            while(phoneNumber.indexOf("-")!=-1) {
+                phoneNumber = phoneNumber.replace("-","");
+            }
+           return phoneNumber;
+        };
+        // const clearNumber = phoneNumber.replace(/\D/g, ""); // 숫자가 아닌 것은 없애라, 여기서 g를 붙이면 전체를 의미함.
+        console.log(clearNumber(phoneNumber));
+
+        let str = "Welcome Jeju!! Jeju!!";
+        console.log(str.replace(/Jeju/g, "Seoul"));
+
+    // 3. padStart실무 활용 예제
+
+        // 3-1 쇼핑 사이트에서 주문 번호나 회원번호를 생성하고 관리하기 편하도록 
+        let memberNumber = 234;
+
+        const generateMemberNumber = (number, digit) => {
+            return "MN-"+String(number).padStart(digit, "0");
+        }
+        console.log(generateMemberNumber(memberNumber, 6)); // MN-000234
+    // 4. charAt 실무 활용 예제
+    // 5. split 실무 활용 예제
+    // 6. endsWith 실무 활용 예제
     </script>
 </body>
 </html>
