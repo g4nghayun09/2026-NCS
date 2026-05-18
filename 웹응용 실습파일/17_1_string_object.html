@@ -56,8 +56,71 @@
         }
         console.log(generateMemberNumber(memberNumber, 6)); // MN-000234
     // 4. charAt 실무 활용 예제
+        const checkGender = (sn) => {
+            sn = sn.padStart("0", 14);
+            let genderNum = sn.charAt(sn.indexOf("-")+1);
+            if(genderNum==1 || genderNum==3) {
+                return "내국인 남자";
+            }
+            else if(genderNum==2 || genderNum==4) {
+                return "내국인 여자";
+            }
+            else if(genderNum==5) {
+                return "외국인 남자";
+            }
+            else if(genderNum==6) {
+                return "외국인 여자";
+            }
+            else {
+                return "주민등록번호를 잘 입력해주세요.";
+            }
+        }
+        console.log(checkGender("091215-4057213")); // 내국인 여성
+
     // 5. split 실무 활용 예제
+        // URL을 통해 특정 파라미터를 추출하기 (카테고리, 물품명)
+        const url = "https://myshop.com/products/electronics/iphone15";
+        const pageSegment = url.split("/");
+        //console.log(pageSegment);
+        let size = pageSegment.length;
+        // 카테고리
+        console.log(pageSegment[size-2]); // 여기서 전체길이의 -2
+        // 물품명
+        console.log(pageSegment[size-1]); // 여기서 전체길이의 -1
+        console.log(`카테고리 : ${pageSegment[size - 2]}`);
+        console.log(`물품명 : ${pageSegment[size - 1]}`);
+
+        // *****로그파일을 통해 시간과 사용자 알아내기
+        const csvData = 
+            "2024-04-29, Login_Success, user_01\n2024-04-29, Login_Fail, user_02";
+        const log = csvData.split("\n");
+        for(line of log) {
+            [date, status, user] = line.split(", "); // 배열 분할 할당
+            // 로그인에 성공한 사람의 id와 성공시간을 출력
+            if(status === "Login_Success") {
+                console.log(`${user}님 ${date}에 로그인 성공입니다.`);
+            }
+            else {
+                console.log(`${user}님 ${date}에 로그인 실패입니다.`);
+            }
+        }
+
     // 6. endsWith 실무 활용 예제
+        // jpg, png 만 업로드 가능하다고 가정하자.
+        const checkFileName = (fileName) => {
+            // 모두 대문자로 변경 - 어느 쪽이든 한쪽으로 맞추자
+            fileName = fileName.toUpperCase();
+            if(fileName.endsWith(".JPG") || fileName.endsWith(".PNG")) {
+                return "업로드가 가능합니다.";
+            }
+            else {
+                return "업로드가 불가능합니다.";
+            }
+        }
+
+        console.log(checkFileName("my_photo.JPG")); // 업로드가 가능합니다.
+        console.log(checkFileName("my_photo.gif")); // 업로드가 불가능합니다.
+
     </script>
 </body>
 </html>
