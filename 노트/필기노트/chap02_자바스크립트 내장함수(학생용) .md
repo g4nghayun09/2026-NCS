@@ -60,19 +60,19 @@
 
 - 실습 : (18_number_object.html)
 
-  ① toString() :
+  ① toString() : 문자열로 반환
+ 
+  ② toExponential() : 지수 표기법으로 반환 => 사용 안함
 
-  ② toExponential() :
-
-  ③ toFixed() :
+  ③ toFixed() : 소숫점 몇자리까지 보여줄지 결정하는 함수
 
   ④ toPrecision() : //실무에서 거의 사용하지 않는다.
 
-  ⑤ parseInt() :
+  ⑤ parseInt() : 문자를 정수로 반환 
 
   //전역함수이므로 문자열.parseInt( ) 가 아니라 parseInt(문자열)로 작성한다.
 
-  ⑥ parseFloat() :
+  ⑥ parseFloat() : 문자를 실수(부동소수점)로 반환
 
   ⑦ 부동소수점의 최대숫자, 최소 숫자 확인
 
