@@ -1,53 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number_object</title>
-</head>
-<body>
-    <!-- id(고유) : 자바스크립트에서 제어하기 위해 부여 -->
-    숫자1 : <input type="number" id="n1"/> <br>
-    숫자2 : <input type="number" id="n2"/> <br>
-    <button onclick="doSum(n1, n2)">계산</button>
-    <p>결과 : <span id="result"></span></p>
-    <script>
-        // Number 객체 내장 함수
-        let num = 67978;
-        console.log(num);
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Number_object</title>
+    </head>
+    <body>
+        <!-- id(고유) : 자바스크립트에서 제어하기 위해 부여 -->
+        <label for="n1">숫자1 : </label>
+        <input type="number" id="n1" /> <br />
+        <label for="n2">숫자2 : </label>
+        <input type="number" id="n2" /> <br />
+        <button onclick="doSum(n1, n2)">계산</button>
+        <p>결과 : <span id="result"></span></p>
+        <script>
+            // Number 객체 내장 함수
+            let num = 67978;
+            console.log(num);
 
-        // 1. toString() : 숫자를 문자열로 
-        let strNum = num.toString();
-        console.log(strNum);
+            // 1. toString() : 숫자를 문자열로
+            let strNum = num.toString();
+            console.log(strNum);
 
-        // 2. parseInt() : 문자열을 정수로, 전역 함수 -> 주인이 window(전역객체)
-        console.log(parseInt(strNum));
+            // 2. parseInt() : 문자열을 정수로, 전역 함수 -> 주인이 window(전역객체)
+            console.log(parseInt(strNum));
 
-        // 3. parseFloat() : 문자열을 실수로, 전역 함수 -> 주인이 window(전역객체)
-        let f = "1.234546";
-        console.log(f);
-        console.log(parseFloat(f));
+            // 3. parseFloat() : 문자열을 실수로, 전역 함수 -> 주인이 window(전역객체)
+            let f = "1.234546";
+            console.log(f);
+            console.log(parseFloat(f));
 
-        // 4. toExponnential() : 지수 표기법
-        let x = 100.3456;
-        console.log(x.toExponential()); // 1.003456e+2
+            // 4. toExponnential() : 지수 표기법
+            let x = 100.3456;
+            console.log(x.toExponential()); // 1.003456e+2
 
-        // 5. toFixed() : 소수점 몇자리가지 보여줄지를 결정하는 함수
-        console.log(x.toFixed(0)); // 100
-        console.log(x.toFixed(1)); // 100.3
-        console.log(x.toFixed(2)); // 반올림 -> 100.35
-        console.log(x.toFixed(3)); // 100.346
+            // 5. toFixed() : 소수점 몇자리가지 보여줄지를 결정하는 함수
+            console.log(x.toFixed(0)); // 100
+            console.log(x.toFixed(1)); // 100.3
+            console.log(x.toFixed(2)); // 반올림 -> 100.35
+            console.log(x.toFixed(3)); // 100.346
 
-        // 6. toPrecision() : 정수와 소수 부분을 합쳐서 몇자리 보여줄지 결정하는 함수
-        // console.log(x.toPrecision(0)); 
-        console.log(x.toPrecision(1)); // 1e+2
-        console.log(x.toPrecision(2)); // 1.0e+2
-        console.log(x.toPrecision(3)); // 100
-        console.log(x.toPrecision(4)); // 100.3
+            // 6. toPrecision() : 정수와 소수 부분을 합쳐서 몇자리 보여줄지 결정하는 함수
+            // console.log(x.toPrecision(0));
+            console.log(x.toPrecision(1)); // 1e+2
+            console.log(x.toPrecision(2)); // 1.0e+2
+            console.log(x.toPrecision(3)); // 100
+            console.log(x.toPrecision(4)); // 100.3
 
-        const doSum = (n1, n2) => {
-            return n1+n2;
-        };
-    </script>
-</body>
+            const doSum = (n1, n2) => {
+                // 1. 두 수 읽기 2. 변환
+                let number1 = parseInt(document.getElementById("n1").value);
+                let number2 = parseInt(document.getElementById("n2").value);
+                console.log(number1);
+                console.log(number2);
+                // 3. 더하기
+                let sum = number1 + number2;
+                // 4. 화면에 출력
+                document.getElementById("result").innerHTML = sum;
+            };
+        </script>
+    </body>
 </html>
