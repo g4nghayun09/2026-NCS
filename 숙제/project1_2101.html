@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미림 카페 주문 관리</title>
+    <style>
+        .btn {
+            background-color: blue;
+            color: white;
+            font-weight: 400;
+        }
+
+        .table1 {
+            width: 500px;
+            border: 1px solid black;
+            margin-top: 10px;
+            border-collapse: collapse;
+            /*중복되는 선 제거*/
+        }
+
+        .table1 th {
+            border: 1px solid black;
+            background-color: hotpink;
+        }
+
+        .table1 td {
+            text-align: center;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>미림 카페 주문 관리</h1>
+    <h2>메뉴 선택</h2>
+    <span>메뉴</span>
+    <select name="menu" id="menu"></select>
+
+    <span>수량</span>
+    <input type="number" id="amount">
+    <button onclick="loadMenu()" class="btn">주문추가</button>
+
+    <h2>메뉴 검색</h2>
+    <input type="text" id="menuName" placeholder="메뉴명을 입력하세요">
+    <button onclick="WhereIsMenu()" class="btn">검색</button>
+    <p id="resultText"></p>
+
+    <h2>주문 내역</h2>
+    <table class="table1">
+        <thead>
+            <th>주문번호</th>
+            <th>메뉴명</th>
+            <th>단가</th>
+            <th>수량</th>
+            <th>금액</th>
+        </thead>
+        <tbody id="tbody1">
+
+        </tbody>
+    </table>
+
+    <h2>결제 정보</h2>
+    <p>총 주문 수량: <span id="total1"></span>개</p>
+    <p>총 결제 금액: <span id="total2"></span>원</p>
+
+    <script>
+        const menuList = [
+            { name: "아메리카노", price: 3000, category: "coffee" },
+            { name: "카페라떼", price: 4000, category: "coffee" },
+            { name: "바닐라라떼", price: 4500, category: "coffee" },
+            { name: "초코라떼", price: 4200, category: "nonCoffee" },
+            { name: "레몬에이드", price: 5000, category: "ade" },
+            { name: "자몽에이드", price: 5200, category: "ade" },
+        ];
+        let totalCnt = 0;
+        let totalPrice = 0;
+        let searchText = "검색결과가 여기에 표시됩니다.";
+
+        // 메뉴 선택 부분
+        function menuChoose() {
+            const tags = [];
+            for (menu of menuList) {
+                tags.push("<option value= " + menu.name + ">" + menu.name + " : " + menu.price + "</option>");
+            }
+            return tags;
+        }
+        const tagsList = menuChoose(); // 배열 형식
+        document.getElementById("menu").innerHTML = tagsList.join("");
+
+
+        // 메뉴 선택 부분
+        const loadMenu = () => {
+            let amount = Number(document.getElementById("amount").value);
+            let name = document.getElementById("menu").value;
+            let price = 0;
+
+
+            let order = {};
+            for (x of menuList) {
+                if (x.name == name) {
+                    price = x.price;
+                    order = {
+                        id: 0,
+                        name: x.name,
+                        price: x.price,
+                        amount: amount,
+                        totalprice: amount * x.price,
+                    }
+                    break;
+                }
+            }
+
+            let tagsStr = [];
+            tagsStr.push(
+                `<tr> <td> ${order.id} </td> <td> ${order.name} </td> <td> ${order.price} </td> <td> ${order.amount} </td> <td> ${order.totalprice} </td></tr>`,
+            );
+            document.getElementById("tbody1").innerHTML += tagsStr.join(" ");
+
+            totalCnt += amount;
+            document.getElementById("total1").innerHTML = totalCnt;
+
+            totalPrice += amount * price;
+            document.getElementById("total2").innerHTML = totalPrice;
+
+
+        };
+
+        // 메뉴 검색 부분
+        const WhereIsMenu = () => {
+            let name = document.getElementById("menuName").value;
+            let be = false;
+            for (x of menuList) {
+                if (x.name == name) {
+                    searchText = x.name + " : " + x.price;
+                    be = true;
+                }
+            }
+            if (!be) {
+                searchText = "없습니다.";
+            }
+            document.getElementById("resultText").innerHTML = searchText;
+        }
+
+        // 마지막 줄 결제 정보 부분
+        document.getElementById("total1").innerHTML = totalCnt;
+        document.getElementById("total2").innerHTML = totalPrice;
+    </script>
+</body>
+
+</html>
