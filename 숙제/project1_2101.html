@@ -57,7 +57,6 @@
             <th>금액</th>
         </thead>
         <tbody id="tbody1">
-
         </tbody>
     </table>
 
@@ -89,9 +88,10 @@
         const tagsList = menuChoose(); // 배열 형식
         document.getElementById("menu").innerHTML = tagsList.join("");
 
-
+        let cnt = 0;
         // 메뉴 선택 부분
         const loadMenu = () => {
+            cnt++;
             let amount = Number(document.getElementById("amount").value);
             let name = document.getElementById("menu").value;
             let price = 0;
@@ -102,30 +102,33 @@
                 if (x.name == name) {
                     price = x.price;
                     order = {
-                        id: 0,
+                        orderNo: "ORDER-00" + cnt,
                         name: x.name,
                         price: x.price,
-                        amount: amount,
-                        totalprice: amount * x.price,
+                        quantity: amount,
+                        total: amount * x.price,
                     }
                     break;
                 }
             }
-
-            let tagsStr = [];
-            tagsStr.push(
-                `<tr> <td> ${order.id} </td> <td> ${order.name} </td> <td> ${order.price} </td> <td> ${order.amount} </td> <td> ${order.totalprice} </td></tr>`,
-            );
-            document.getElementById("tbody1").innerHTML += tagsStr.join(" ");
-
+            renderOrderTable(order.orderNo, order.name, order.price, order.quantity, order.total);
             totalCnt += amount;
             document.getElementById("total1").innerHTML = totalCnt;
 
             totalPrice += amount * price;
             document.getElementById("total2").innerHTML = totalPrice;
-
-
         };
+
+        // 테이블 뿌리기
+        const renderOrderTable = (orderNo, name, price, quantity, total) => {
+            let tagsStr = [];
+            tagsStr.push(
+                `<tr> <td> ${orderNo} </td> <td> ${name} </td> <td> ${price} </td> <td> ${quantity} </td> <td> ${total} </td></tr>`,
+            );
+            document.getElementById("tbody1").innerHTML += tagsStr.join(" ");
+
+            
+        }
 
         // 메뉴 검색 부분
         const WhereIsMenu = () => {
