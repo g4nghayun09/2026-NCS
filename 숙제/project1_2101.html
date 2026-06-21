@@ -44,7 +44,7 @@
 
     <h2>메뉴 검색</h2>
     <input type="text" id="menuName" placeholder="메뉴명을 입력하세요">
-    <button onclick="WhereIsMenu()" class="btn">검색</button>
+    <button onclick="SearchMenu()" class="btn">검색</button>
     <p id="resultText"></p>
 
     <h2>주문 내역</h2>
@@ -127,11 +127,11 @@
             );
             document.getElementById("tbody1").innerHTML += tagsStr.join(" ");
 
-            
+
         }
 
         // 메뉴 검색 부분
-        const WhereIsMenu = () => {
+        const SearchMenu = () => {
             let name = document.getElementById("menuName").value;
             let be = false;
             for (x of menuList) {
@@ -146,9 +146,12 @@
             document.getElementById("resultText").innerHTML = searchText;
         }
 
+        const updateTotalInfo = () => {
+            document.getElementById("total1").innerHTML = totalCnt;
+            document.getElementById("total2").innerHTML = totalPrice;
+        }
         // 마지막 줄 결제 정보 부분
-        document.getElementById("total1").innerHTML = totalCnt;
-        document.getElementById("total2").innerHTML = totalPrice;
+        updateTotalInfo();
     </script>
 </body>
 

@@ -39,7 +39,6 @@
         text-align: center;
         border: 1px solid black;
       }
-      
     </style>
   </head>
 
@@ -83,8 +82,8 @@
 
     <table class="table2">
       <thead>
-          <th>이름</th>
-          <th>email</th>
+        <th>이름</th>
+        <th>email</th>
       </thead>
       <tbody id="tbody2"></tbody>
     </table>
@@ -279,15 +278,15 @@
       console.log(descPoint);
 
       // 10-1. sort()의 활용 => 가격을 기준으로 오름차순으로 정리
-      const drinkList = [
+      let drinkList = [
         { name: '오렌지', price: 1000 },
         { name: '파워에이드', price: 1200 },
         { name: '커피', price: 700 },
         { name: '보리음료', price: 1200 },
         { name: '코카콜라', price: 1800 },
       ];
-      const ascList = drinkList.sort((a, b)=> {
-        return a.price-b.price;
+      const ascList = drinkList.sort((a, b) => {
+        return a.price - b.price;
       });
       console.log(ascList);
 
@@ -295,12 +294,12 @@
       // 배열에서 특정 조건에 맞는 요소만 배열로 리턴
       // drinkList에서 1000원으로 구입 가능한 음료를 찾아라 => for of
       let available = [];
-      for(let x of drinkList) {
-        if(x.price<=1000) {
-            available.push(x);
+      for (let x of drinkList) {
+        if (x.price <= 1000) {
+          available.push(x);
         }
       }
-      console.log(available); 
+      console.log(available);
       console.log(drinkList); // 배열은 변하지 않음.
 
       available = drinkList.filter((drink) => {
@@ -312,26 +311,26 @@
       // 과제2 : 필터조건 - 카테고리 중 악세서리인 것을 찾아라
       // 과제3 : 필터조건 - 카테고리 중 악세서리이며 가격이 10만원 이하인 것을 찾아라
       let product = [
-        {id: 1, name: "맥북 프로", category: "electronics", price: 250000},
-        {id: 2, name: "아이패드 에어", category: "electronics", price: 90000},
-        {id: 3, name: "기계식 키보드", category: "accessories", price: 150000},
-        {id: 4, name: "허브 메트", category: "accessories", price: 30000}
-      ] ;
+        { id: 1, name: '맥북 프로', category: 'electronics', price: 250000 },
+        { id: 2, name: '아이패드 에어', category: 'electronics', price: 90000 },
+        { id: 3, name: '기계식 키보드', category: 'accessories', price: 150000 },
+        { id: 4, name: '허브 메트', category: 'accessories', price: 30000 },
+      ];
       // 과제 1
       let available1 = product.filter((pro) => {
-        return pro.category === "accessories" && pro.price<=100000;
+        return pro.category === 'accessories' && pro.price <= 100000;
       });
       console.log(available1);
 
       // 과제 2
       let available2 = product.filter((pro) => {
-        return pro.category === "accessories";
+        return pro.category === 'accessories';
       });
       console.log(available2);
 
       // 과제 3
       let available3 = product.filter((pro) => {
-        return pro.category === "accessories" && pro.price<=100000;
+        return pro.category === 'accessories' && pro.price <= 100000;
       });
       console.log(available3);
 
@@ -339,27 +338,27 @@
       // 기존 배열은 변화하지 않는다.
       let userList = [
         {
-          firstName : "현민",
-          lastName : "이",
-          email : "lee@gmail.com",
+          firstName: '현민',
+          lastName: '이',
+          email: 'lee@gmail.com',
         },
         {
-          firstName : "지수",
-          lastName : "임",
-          email : "lim@gmail.com",
+          firstName: '지수',
+          lastName: '임',
+          email: 'lim@gmail.com',
         },
         {
-          firstName : "하은",
-          lastName : "장",
-          email : "jang@gmail.com",
-        }
+          firstName: '하은',
+          lastName: '장',
+          email: 'jang@gmail.com',
+        },
       ];
       // console.log(userList);
       // 12-1. map을 활용하여 fullName, email을 갖는 newUserList를 생성하시오
       let newUserList = userList.map((user) => {
         let fullName = user.lastName + user.firstName;
-        let email = user.email
-        return {fullName, email};
+        let email = user.email;
+        return { fullName, email };
       });
       console.log(newUserList);
 
@@ -376,7 +375,52 @@
         // 3. 태그 랜더링(innerHTML)해서 화면에 뿌리기
         document.getElementById('tbody2').innerHTML = tagsStr;
       });
-    
+
+      // 13. reduce() : 누적 합을 구하는 함수
+      /*
+       형식
+          배열.reduce((누적값, 현재값, 인덱스, 원본배열) => {
+            return 다음 누산기에 넘겨줄 값;
+          });
+      */
+      product = [
+        { id: 1, name: '맥북 프로', category: 'electronics', price: 2500000 },
+        { id: 2, name: '아이패드 에어', category: 'electronics', price: 900000 },
+        { id: 3, name: '기계식 키보드', category: 'accessories', price: 150000 },
+        { id: 4, name: '허브 메트', category: 'accessories', price: 300000 },
+      ];
+      // 단가의 합
+      let sum = 0;
+      for (x of product) {
+        sum += x.price;
+      }
+      console.log(sum);
+
+      let sumOfPrice = product.reduce((sum, product) => {
+        sum += product.price;
+        return sum;
+      }, 0);
+      console.log(sumOfPrice);
+
+      point = [100, 98, 95, 87, 79, 68];
+      let sumOfPoint = point.reduce((sum, point) => {
+        sum += point;
+        return sum;
+      }, 0);
+      console.log(sumOfPoint);
+
+      drinkList = [
+        { name: '오렌지', price: 1000 },
+        { name: '파워에이드', price: 1200 },
+        { name: '커피', price: 700 },
+        { name: '보리음료', price: 1200 },
+        { name: '코카콜라', price: 1800 },
+      ];
+      let sumOfDrink = drinkList.reduce((sum, drink) => {
+        sum += drink.price;
+        return sum;
+      }, 0);
+      console.log(sumOfDrink);
     </script>
   </body>
 </html>
