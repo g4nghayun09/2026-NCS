@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set</title>
+</head>
+<body>
+    <script>
+        // 다음은 좋아하는 음식을 단답형으로 입력하는 설문 조사
+        // 사용자가 입력한 음식 종류를 저장한 배열 foods
+        let foods = ["햄버거", "제육볶음", "삼겹살", "치킨", "피자", "신라면", "신라면"];
+        // 동일한 값은 삭제 => 1. 2중 for, 2. for, 3. 객체로, 4. filter
+        let oFood = {};
+        for(const food of foods) {
+            oFood [food] = "";
+        }
+        console.log(oFood);
+
+        let uniqueFood = [];
+        for(const key in oFood) {
+            uniqueFood.push(key);
+        }
+        console.log(uniqueFood);
+
+        let uniqueFood2 = foods.filter((food, index)=>{
+            return index == foods.indexOf(food);
+        });
+        console.log(uniqueFood2);
+        
+        // 1. add() : set의 값을 추가
+        let foodSet = new Set();
+        foodSet.add("김치찌개");
+        foodSet.add("참치찌개");
+        foodSet.add("된장찌개");
+        foodSet.add("부대찌개");
+        foodSet.add("김치찌개");
+        foodSet.add("김기범");
+        foodSet.add("부대찌개");
+        foodSet.add("김기범");
+        console.log(foodSet);
+
+        foodSet.forEach((food)=>{
+            console.log(food);
+        });
+
+        // 2. has() : set에 포함되어 있는지 여부를 true, false로 리턴 - 가장 중요
+        console.log(foodSet.has("김기범")); // true
+        console.log(foodSet.has("국밥")); // false
+
+        // 3. delete() : 요소 하나 삭제
+        foodSet.delete("김치찌개");
+        console.log(foodSet); 
+        console.log(foodSet.size); // 4
+
+        // 4. clear() : reset, 완전 삭제
+        foodSet.clear();
+        console.log(foodSet);
+        console.log(foodSet.size); // 0
+    </script>
+</body>
+</html>

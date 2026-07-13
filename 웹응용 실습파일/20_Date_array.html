@@ -1,52 +1,75 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>date_array</title>
-</head>
-<body>
-    <input type="date" name="" id="startDate"> ~
-    <input type="date" name="" id="endDate">
+  </head>
+  <body>
+    <input type="date" name="" id="startDate" /> ~
+    <input type="date" name="" id="endDate" />
+    <script src="./js/common.js"></script>
     <script>
-        // 1. 객체 생성하기
-        let now = new Date(); // 요일 달 일 년도 시 분 초 순서로 생성
-        console.log(now); // Mon Jun 15 2026 11:28:30 GMT+0900 (한국 표준시)
+      // 1. 객체 생성하기
+      let now = new Date(); // 요일 달 일 년도 시 분 초 순서로 생성
+      console.log(now); // Mon Jun 15 2026 11:28:30 GMT+0900 (한국 표준시)
 
-        // 2. 년, 월, 일, 시간, 분, 초, 밀리초로 만들기 
-        let d = new Date(2026, 4, 5, 13, 10, 0); // 5월을 만들려면 4를 써야함.
-        console.log(d); // Tue May 05 2026 13:10:00 GMT+0900 (한국 표준시)  
+      // 2. 년, 월, 일, 시간, 분, 초, 밀리초로 만들기
+      let d = new Date(2026, 4, 5, 13, 10, 0); // 5월을 만들려면 4를 써야함.
+      console.log(d); // Tue May 05 2026 13:10:00 GMT+0900 (한국 표준시)
 
-        // 3. get() 내장함수
-        let year = now.getFullYear();
-        let month = now.getMonth(); // +1               
-        let day = now.getDay(); // 요일
-        let date = now.getDate(); 
-        let hour = now.getHours(); // s붙음
-        let minute = now.getMinutes();
-        let second = now.getMilliseconds();
-        console.log(year, month, day, date, hour, minute, second); // 2026 5 1 15 11 33 438
+      // 3. get() 내장함수
+      let year = now.getFullYear();
+      let month = now.getMonth(); // +1
+      let day = now.getDay(); // 요일
+      let date = now.getDate();
+      let hour = now.getHours(); // s붙음
+      let minute = now.getMinutes();
+      let second = now.getMilliseconds();
+      console.log(year, month, day, date, hour, minute, second); // 2026 5 1 15 11 33 438
 
-        // 4. set() 내장함수 
-        // 5. 오늘 날짜를 구함 => endDate에 뿌리기  
-        // YYYY-MM-DD
-        let today = year + "-" + (month+1).toString().padStart(2, 0) + "-" + date.toString().padStart(2, 0);
-        console.log(today);
-        document.getElementById('endDate').value = today;
+      // 4. set() 내장함수
+      // 5. 오늘 날짜를 구함 => endDate에 뿌리기
+      // YYYY-MM-DD
+      let today = year + '-' + (month + 1).toString().padStart(2, 0) + '-' + date.toString().padStart(2, 0);
+      console.log(today);
+      document.getElementById('endDate').value = today;
 
-        // 6. 일주일전을 startDate에 뿌리자
-        // let beforeSevendays = new Date(year, month, date-7);
-        // console.log(beforeSevendays);
-        // 기준시 지원 : 1970/01/01/00:00:00
-        let d2 = new Date(0);
-        console.log(d2);
+      // 6. 일주일전을 startDate에 뿌리자
+      let beforeSevendays = new Date(year, month, date - 7);
+      console.log(beforeSevendays);
+      // 기준시 지원 : 1970/01/01/00:00:00
+      let d2 = new Date(0);
+      console.log(d2);
 
-        let d3 = new Date(24*60*60*1000);
-        console.log(d3);
+      let oneDay = 24 * 60 * 60 * 1000;
+      console.log(oneDay);
 
-        let current = now.getTime();
-        console.log(current);
-        // 7.
+      let d3 = new Date(24 * 60 * 60 * 1000);
+      console.log(d3);
+
+      let current = now.getTime();
+      console.log(current);
+
+      // 7. getTime() : 기준일로부터 현재까지의 밀리초를 구하는 함수
+      console.log(current);
+      console.log(new Date(current));
+
+      // 9. 함수 : getIntervalDate() 오늘을 기준으로 며칠 전, 후를 구하는 함수
+      getIntervalDate(-3); // 06/23
+      getIntervalDate(7); // 07/06
+      
+      // 10. 함수 : getIntervalDateFormat() 오늘을 기준으로 며칠 전, 후를 일정한 형식으로 구하는 함수
+      getIntervalDateFormat(5, "YY-MM-DD"); // 26-07-04
+      getIntervalDateFormat(-7, "YYYY-MM-DD"); // 2026-06-26
+
+      // 11. 함수 : getIntervalDateFormat2() 오늘을 기준으로 며칠 전, 후를 정해진 포맷으로 구하는 함수 
+      // (기호에 관계없이)
+      console.log(getIntervalDateFormat2(5, "YY-MM-DD")); // 2026-06-26
+      console.log(getIntervalDateFormat2(5, "YYYY.MM.DD")); // 2026-06-26
+
+      console.log(getIntervalDateFormat3(5, "YY-MM-DD")); // 2026-06-26
+      console.log(getIntervalDateFormat3(5, "YYYY.MM+DD")); // 2026-06-26
     </script>
-</body>
+  </body>
 </html>
