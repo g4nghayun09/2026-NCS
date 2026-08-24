@@ -70,7 +70,7 @@
       // 활용 4. min과 max의 값중 임의의 수를 발생시키는 함수 getRandomInteger(min, max) 작성. 오직 양정수만
       getRandomInteger(11, 20);
       function getRandomInteger(min, max) {
-        console.log(Math.ceil(Math.random()*max)+min);
+        console.log(Math.round(Math.random()*(max-min))+min);
       }
     </script>
   </body>
