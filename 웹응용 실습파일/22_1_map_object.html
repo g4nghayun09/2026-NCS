@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>map</title>
+  </head>
+  <body>
+    <script>
+      // 객체는 불편해
+      let oPerson = {};
+      oPerson.name = '강하윤';
+      oPerson.number = 2101;
+      oPerson.email = 'kang@gmail.com';
+      oPerson['185'] = 75;
+      // name : "강하윤"
+      // number : 2101
+      // 요소의 총 갯수 : 4개
+      // 순서가 없음
+      let cnt = 0;
+      for (let x in oPerson) {
+        console.log(x + ' : ' + oPerson[x]);
+        cnt++;
+      }
+      console.log('요소의 총 갯수 : ' + cnt + '개');
+
+      // map
+      let personMap = new Map();
+      personMap.set('name', '강하윤');
+      personMap.set('number', '2101');
+      personMap.set('email', 'kang@gmail.com');
+      personMap.set(185, 75);
+      console.log('');
+
+      // 출력
+      cnt = 0;
+      personMap.forEach((value, key) => {
+        console.log(key + ' : ' + value);
+        cnt++;
+      });
+
+      // 2. size 속성
+      console.log('요소의 총 갯수 : ' + personMap.size + '개');
+      console.log('');
+
+      // 3. keys() : 키만 가져오기
+      for (const key of personMap.keys()) {
+        console.log(key);
+      }
+      console.log('');
+
+      // 4. values() : 값만 가져오기
+      for (const value of personMap.values()) {
+        console.log(value);
+      }
+      console.log('');
+
+      // 5. get() : 특정 키에 대한 값을 가져오기
+      console.log(personMap.get('name'));
+      console.log('');
+
+      // 6. has() : 키의 존재 여부 (boolean)
+      console.log(personMap.has('name'));
+      console.log(personMap.has('phone'));
+      console.log('');
+
+      // 7. delete() : 해당하는 item 삭제
+      personMap.delete('name');
+      personMap.forEach((value, key) => {
+        console.log(key + ' : ' + value);
+        cnt++;
+      });
+
+      // 8. clear() : 모두 삭제
+      personMap.clear();
+      personMap.forEach((value, key) => {
+        console.log(key + ' : ' + value);
+        cnt++;
+      }); // 아무것도 안나옴
+
+      
+    </script>
+  </body>
+</html>

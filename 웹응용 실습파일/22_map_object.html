@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>map_활용</title>
+  </head>
+  <body>
+    <script>
+      /*
+        개발자들은 왜 일반 객체대신 map을 쓸까요?
+        1. 갯수 구하기 쉬움
+        2. 자료를 추가하고 삭제하는 속도가 빠름
+        3. key에 무엇이든 올 수 있음
+      */
+
+      /*
+        실무 예제 : 온라인 쇼핑몰 장바구니 관리
+        쇼핑몰 웹사이트를 만들 때 장바구니는 아래 기능이 반드시 필요합니다.
+          1. 상품 담기 (추가)
+          2. 이미 담긴 상품인지 확인하고 수량 늘리기 (조회 및 수정)
+          3. 상품 빼기 (삭제)
+          4. 장바구니에 총 몇 종류의 상품이 있는지 확인 (개수 파악)
+      */
+      const myShoppingCart = new Map();
+      myShoppingCart.set('pro_01', { name: '축구공', price: 150000, quantity: 1 });
+      myShoppingCart.set('pro_02', { name: '노트북', price: 3000000, quantity: 1 });
+
+      // 내가 추가하려고 하는 item
+      let userInput = 'pro_01';
+
+      /* 
+        1. 장바구니에 있는지 확인 =>
+        2. 있다면? => 추가할래? => yes : quantity++
+                             => no : 없음
+        3. 없다면 => 추가완료 message
+      */
+      // let l = myShoppingCart.get(userInput).quantity++;
+      // console.log(l);
+
+      // if (myShoppingCart.has(userInput)) {
+      //   prompt('추가? (예 or 아니오)');
+      //   if (prompt == '예') {
+      //     let l = myShoppingCart.get(userInput)++;
+      //     myShoppingCart.set(userInput, { name: '축구공', price: 150000, quantity: 1 });
+      //     console.log(l);
+      //   }
+      // } else {
+      //   myShoppingCart.set(userInput, { name: '축구공', price: 150000, quantity: 1 });
+      //   myShoppingCart.forEach((value, key) => {
+      //     console.log(key + ' : ' + value);
+      //   });
+      // }
+
+      if(myShoppingCart.has(userInput)) {
+        alert("이미 장바구니에  있습니다");
+        if(prompt("그래도 추가하겠습니까?")) {
+          const item = myShoppingCart.get(userInput);
+          item.quantity++;
+          myShoppingCart.set(userInput, item);
+          console.log(`현재 장바구니에 담긴 ${item.name}의 갯수 : ${item.quantity}`);
+        }
+      }
+      else {
+        console.log("추가 완료");
+      }
+
+      // 장바구니의 전체 내역 보여주기, item의 총 갯수, 총 금액 출력
+      let totalQuantity = 0;
+      let totalPrice = 0;
+      for(const [productId, productInfo] of myShoppingCart) {
+        totalQuantity += productInfo.quantity;
+        totalPrice += productInfo.price * productInfo.quantity;
+        console.log(`${productId} => ${productInfo.name} : ${productInfo.price}, ${productInfo.quantity}`)
+      }
+      console.log("총 갯수: " + totalQuantity)
+      console.log("총 가격: " + totalPrice)
+    </script>
+  </body>
+</html>
