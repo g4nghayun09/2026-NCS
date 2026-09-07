@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>재미있는 가위바위보 게임</title>
+  </head>
+  <body>
+    <script src="../js/common.js"></script>
+    <button onclick="scissor()">가위 ✌️</button>
+    <button onclick="rock()">바위 ✊</button>
+    <button onclick="paper()">보 ✋</button>
+
+    <!-- <button onclick="RSP(1)">가위 ✌️</button>
+    <button onclick="RSP(2)">바위 ✊</button>
+    <button onclick="RSP(3)">보 ✋</button> -->
+
+    <script>
+      // 컴퓨터 부분
+      /*
+            가위 : 1
+            바위 : 2
+            보 : 3
+        */
+      
+      // 컴퓨터 의견 출력
+      let com;
+      function cRSP() {
+        com = getRandomInteger(1, 3);
+        if (com == 1) {
+          console.log('컴퓨터 : 가위');
+        } else if (com == 2) {
+          console.log('컴퓨터 : 바위');
+        } else if (com == 3) {
+          console.log('컴퓨터 : 보');
+        }
+      }
+
+      // function uRSP(rsp) {
+      //   if (rsp == 1) {
+      //     console.log('사용자 : 가위');
+      //   } else if (rsp == 2) {
+      //     console.log('사용자 : 바위');
+      //   } else if (rsp == 3) {
+      //     console.log('사용자 : 보');
+      //   }
+      // }
+
+      // const RSP = (rsp) => {
+      //   cRSP();
+      //   uRSP(rsp);
+        
+      //   if (rsp == com) {
+      //     console.log('무승부');
+      //   } else if (rsp > com) {
+      //     console.log('사용자의 승리');
+      //   } else if (rsp < com) {
+      //     console.log('컴퓨터의 승리');
+      //   }
+      // };
+
+      // 사용자가 가위일때
+      const scissor = () => {
+        cRSP()
+        console.log('사용자 : 가위');
+        if (com == 1) {
+          console.log('무승부');
+        } else if (com == 2) {
+          console.log('사용자의 패배');
+        } else if (com == 3) {
+          console.log('사용자의 승리');
+        }
+      };
+      // 사용자가 바위일때
+      const rock = () => {
+        cRSP()
+        console.log('사용자 : 바위');
+        if (com == 1) {
+          console.log('사용자의 승리');
+        } else if (com == 2) {
+          console.log('무승부');
+        } else if (com == 3) {
+          console.log('사용자의 패배');
+        }
+      };
+      // 사용자가 보일때
+      const paper = () => {
+        cRSP()
+        console.log('사용자 : 보');
+        if (com == 1) {
+          console.log('사용자의 패배');
+        } else if (com == 2) {
+          console.log('사용자의 승리');
+        } else if (com == 3) {
+          console.log('무승부');
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>디폴트 파라미터</title>
+  </head>
+  <body>
+    <script>
+      // default_parameter : 일반적으로 함수 호출시 파라미터를 전달하지 않을 경우 undefind 값이 출력
+      // 이를 막기 위해 기본값을 설정할 수 있다.
+      // 이를 기본 함수매개변수 (default parameter)라고 부른다
+      const sayHello = (name) => {
+        if (name) { // 전통적인 방법
+          console.log('Hello!!', name);
+        }
+      };
+
+      sayHello('하윤');
+      sayHello();
+
+      const sayHello2 = (name="EveryOne") => {
+        console.log("Hello!!", name);
+      };
+      sayHello2();
+    </script>
+  </body>
+</html>

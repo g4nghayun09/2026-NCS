@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>window 예제</title>
+  </head>
+  <body>
+    <script>
+      alert('Hi');
+
+      const doDelete = () => {
+        const pwd = '1234';
+        let userInput = prompt('비밀번호를 입력하세요');
+        if (userInput === pwd) {
+          if (window.confirm('정말 삭제하시겠습니까?')) {
+            console.log('삭제 완료');
+          }
+        } else {
+          alert('비밀번호 오류');
+        }
+      };
+
+      //   doDelete();
+
+      const openNaver = () => {
+        window.open('https://naver.com');
+      };
+
+      //   openNaver();
+
+      // 3초 == 3000 밀리초 기준임
+      //   setTimeout(function () {
+      //     openNaver();
+      //   }, 3000);
+
+      const myInterval = setInterval(function () {
+        console.log('2초마다 생성');
+      }, 2000);
+
+      clearInterval(myInterval);
+    </script>
+  </body>
+</html>

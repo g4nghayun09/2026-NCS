@@ -58,18 +58,18 @@
       // 9. 함수 : getIntervalDate() 오늘을 기준으로 며칠 전, 후를 구하는 함수
       getIntervalDate(-3); // 06/23
       getIntervalDate(7); // 07/06
-      
+
       // 10. 함수 : getIntervalDateFormat() 오늘을 기준으로 며칠 전, 후를 일정한 형식으로 구하는 함수
-      getIntervalDateFormat(5, "YY-MM-DD"); // 26-07-04
-      getIntervalDateFormat(-7, "YYYY-MM-DD"); // 2026-06-26
+      getIntervalDateFormat(5, 'YY-MM-DD'); // 26-07-04
+      getIntervalDateFormat(-7, 'YYYY-MM-DD'); // 2026-06-26
 
-      // 11. 함수 : getIntervalDateFormat2() 오늘을 기준으로 며칠 전, 후를 정해진 포맷으로 구하는 함수 
+      // 11. 함수 : getIntervalDateFormat2() 오늘을 기준으로 며칠 전, 후를 정해진 포맷으로 구하는 함수
       // (기호에 관계없이)
-      console.log(getIntervalDateFormat2(5, "YY-MM-DD")); // 2026-06-26
-      console.log(getIntervalDateFormat2(5, "YYYY.MM.DD")); // 2026-06-26
+      console.log(getIntervalDateFormat2(5, 'YY-MM-DD')); // 2026-06-26
+      console.log(getIntervalDateFormat2(5, 'YYYY.MM.DD')); // 2026-06-26
 
-      console.log(getIntervalDateFormat3(5, "YY-MM-DD")); // 2026-06-26
-      console.log(getIntervalDateFormat3(5, "YYYY.MM+DD")); // 2026-06-26
+      console.log(getIntervalDateFormat3(5, 'YY-MM-DD')); // 2026-06-26
+      console.log(getIntervalDateFormat3(5, 'YYYY.MM+DD')); // 2026-06-26
     </script>
   </body>
 </html>

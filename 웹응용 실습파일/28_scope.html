@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scope</title>
+</head>
+<body>
+    <script>
+        function myFunction() {
+            let carName = "테슬라"; // scope : 함수 내 
+            console.log(carName);
+        }
+        myFunction();
+        // console.log(carName);
+
+        let carName2 = "제네시스"; // scope : 함수 내, 외
+        function myFunction2() {
+            console.log(carName2);
+        }
+        myFunction2();
+
+        let carName3 = ""; // scope : 함수 내, 외
+        function myFunction3() {
+            let carName3 = "페라리";
+            console.log(carName3);
+        }
+        myFunction3();
+    </script>
+</body>
+</html>

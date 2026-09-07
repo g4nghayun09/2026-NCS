@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>this</title>
+  </head>
+  <body>
+    <!-- 버튼(DOM 객체) 자체를 의미하는 this -->
+    <button onClick="myFunction3(this)"></button>
+    <select onchange="myFunction3(this)">
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+    </select>
+
+    <script>
+      // 1. this == window
+      console.log(this);
+
+      // 1_1. 함수내에서 this => window
+      function myFunction() {
+        console.log(this);
+      }
+      myFunction();
+
+      const myFunction2 = function () {
+        console.log(this);
+      };
+      myFunction2();
+
+      // 2. (DOM 객체)자체를 의미하는 this
+      const myFunction3 = function (param) {
+        console.log(param);
+      };
+      myFunction3(this);
+
+      // 3. this = object
+      let firstName = 'Pitt';
+      let lastName = "Brad";
+      let person = {
+        firstName: 'Doe',
+        lastName: 'John',
+
+        getFullName: function () {
+          return this.firstName + this.lastName;
+        },
+      };
+      console.log(person.getFullName());
+    </script>
+  </body>
+</html>

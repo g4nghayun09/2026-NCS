@@ -60,18 +60,24 @@
       // 11. random() : 0<= 임의 수 <1
       console.log(Math.random());
 
-      // 과제 
+      console.log('');
+      console.log('과제');
+      // 과제
       // 활용 1. 0~9 (오직 정수만)
-      console.log(Math.round(Math.random()*10));
+      console.log(Math.floor(Math.random() * 10));
+
       // 활용 2. 1~10
-      console.log(Math.ceil(Math.random()*10));
+      console.log(Math.floor(Math.random() * 10) + 1);
+      
       // 활용 3. 1~100
-      console.log(Math.ceil(Math.random()*100));
+      console.log(Math.floor(Math.random() * 100) + 1);
+
       // 활용 4. min과 max의 값중 임의의 수를 발생시키는 함수 getRandomInteger(min, max) 작성. 오직 양정수만
-      getRandomInteger(11, 20);
       function getRandomInteger(min, max) {
-        console.log(Math.round(Math.random()*(max-min))+min);
+        console.log(Math.floor(Math.random() * (max - min + 1)) + min);
       }
+      getRandomInteger(3, 5);
+      
     </script>
   </body>
 </html>

@@ -1,3 +1,5 @@
+// ../js/common.js 경로임.
+
 /**
  * 부가세를 계산해서 리턴하는 함수
  * @param {*} productPrice
@@ -73,34 +75,34 @@ function getIntervalDateFormat(dates, present) {
  */
 function getIntervalDateFormat2(dates, present) {
   let divisor;
-  if(present.length==8) {
+  if (present.length == 8) {
     divisor = present.charAt(2);
-  }
-  else {
+  } else {
     divisor = present.charAt(4);
   }
   let arr = present.toString().split(divisor);
   let now = new Date();
   let rightNow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + dates);
-  let str = "";
-  if(arr[0].length == 4) {
-    str = rightNow.getFullYear() +
+  let str = '';
+  if (arr[0].length == 4) {
+    str =
+      rightNow.getFullYear() +
       divisor +
-      (rightNow.getMonth()+1).toString().padStart(2, 0) +
+      (rightNow.getMonth() + 1).toString().padStart(2, 0) +
       divisor +
       rightNow.getDate().toString().padStart(2, 0);
-  }
-  else {
-    str = rightNow.getFullYear().toString().slice(2, 4) +
+  } else {
+    str =
+      rightNow.getFullYear().toString().slice(2, 4) +
       divisor +
-      (rightNow.getMonth()+1).toString().padStart(2, 0) +
+      (rightNow.getMonth() + 1).toString().padStart(2, 0) +
       divisor +
       rightNow.getDate().toString().padStart(2, 0);
   }
 
   return str;
 }
-
-function getIntervalDateFormat3(dates, present) {
-  
+// min과 max의 값중 임의의 수를 발생시키는 함수 getRandomInteger(min, max) 작성. 오직 양정수만
+function getRandomInteger(min, max) {
+  return (Math.floor(Math.random() * (max - min + 1)) + min);
 }
