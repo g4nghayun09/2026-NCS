@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // spread operator ...
+      // 1. 배열 합치기
+      let arr1 = [1, 2];
+      let arr2 = [3, 4];
+      let arr3 = [...arr1, ...arr2];
+      console.log(arr3);
+
+      // 2. 복사
+        let targetArr = [1, 2, 3, 4, 5];
+        let resultArr = [...targetArr]
+        console.log(targetArr);
+        console.log(resultArr);
+        console.log(targetArr);
+        console.log(resultArr);
+
+        let foodSet = new Set();
+        foodSet.add("김치찌개");
+        foodSet.add("참치찌개");
+        foodSet.add("된장찌개");
+        foodSet.add("부대찌개");
+        foodSet.add("김치찌개");
+        foodSet.add("김기범");
+        foodSet.add("부대찌개");
+        foodSet.add("김기범");
+        console.log(foodSet);
+
+        let resultSet = [...foodSet];
+        console.log(resultSet);
+
+        // 3. rest parameter
+        </script>
+        
+  </body>
+</html>

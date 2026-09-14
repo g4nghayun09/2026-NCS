@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // templete literal = ``
+        // .toString()메서드 호출
+        function fullName(firstName, lastName) {
+            console.log("Hello " + firstName + " " + lastName );
+            console.log(`Hello ${firstName} ${lastName} !`);
+        }
+        fullName("Brad", "Pitt");
+    
+        const myMap = new Map();
+        myMap.set("name", "윈터");
+        myMap.set("phone", "010-7777-8888");
+        myMap.set("address", "신림동");
+        console.log(myMap);
+        console.log(`myMap : ${myMap}`); // object
+
+        const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        console.log(`myArr : ${arr}`);
+
+        myMap.forEach((key, value) => {
+            console.log(`${key} : ${value}`);
+        });
+    </script>
+</body>
+</html>

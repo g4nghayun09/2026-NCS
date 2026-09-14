@@ -73,13 +73,13 @@ function getIntervalDateFormat(dates, present) {
   (기호에 관계없이)
  * @returns
  */
-function getIntervalDateFormat2(dates, present) {
+function getIntervalDateFormat2(dates, present = "YYYY.MM.DD") {
   let divisor;
   if (present.length == 8) {
     divisor = present.charAt(2);
   } else {
     divisor = present.charAt(4);
-  }
+  } 
   let arr = present.toString().split(divisor);
   let now = new Date();
   let rightNow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + dates);
@@ -102,6 +102,7 @@ function getIntervalDateFormat2(dates, present) {
 
   return str;
 }
+
 // min과 max의 값중 임의의 수를 발생시키는 함수 getRandomInteger(min, max) 작성. 오직 양정수만
 function getRandomInteger(min, max) {
   return (Math.floor(Math.random() * (max - min + 1)) + min);
