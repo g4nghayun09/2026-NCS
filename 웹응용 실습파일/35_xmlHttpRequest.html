@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>강하윤</title>
+  </head>
+  <body>
+    <script>
+      // xmlHttpRequest 객체를 이용해서 db를 조회
+      // 1. 객체 생성
+      function getPosts() {
+        const xhr = new XMLHttpRequest();
+        // 2. 요청 보낼 준비
+        xhr.open('GET', 'http://localhost:3000/posts');
+        // 3. 컨텐츠 타입 설정
+        xhr.setRequestHeader('content-type', 'application/json');
+        // 4. 요청 전송
+        xhr.send();
+        // 5. 응답 (response) 함수
+        xhr.onload = () => {
+          if (xhr.status == 200) {
+            // get의 성공 상태 : 200
+            const result = JSON.parse(xhr.response);
+            console.log(result);
+          } else {
+            console.log('error 발생');
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      }
+
+      function getComments() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://localhost:3000/comments');
+        xhr.setRequestHeader('content-type', 'application/json');
+        xhr.send();
+        xhr.onload = () => {
+          if ((xhr.status = 200)) {
+            const result = JSON.parse(xhr.response);
+            console.log(result);
+          } else {
+            console.log('error 발생');
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      }
+
+      getPosts();
+      getComments();
+
+      function getData(target) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://localhost:3000/' + target);
+        xhr.setRequestHeader('content-type', 'application/json');
+        xhr.send();
+        xhr.onload = () => {
+          if ((xhr.status = 200)) {
+            const result = JSON.parse(xhr.response);
+            console.log(result);
+          } else {
+            console.log('error 발생');
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      }
+
+      getData('posts');
+      getData('comments');
+      getData('hayun'); 
+      
+    </script>
+  </body>
+</html>
