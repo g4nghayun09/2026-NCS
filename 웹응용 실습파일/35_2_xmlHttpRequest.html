@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post 데이터 관리</title>
+  </head>
+  <body>
+    <div>
+      <h1>Post 데이터 관리</h1>
+    </div>
+
+    <div>
+      <input type="text" name="" id="id" placeholder="ID" />
+      <input type="text" name="" id="title" placeholder="Title" />
+      <input type="text" name="" id="view" placeholder="VIEWS" />
+    </div>
+
+    <div>
+      <button id="getData" onclick="getData()">조회</button>
+      <button id="addData" onclick="addData()">추가</button>
+      <button id="updateData" onclick="updateData()">수정</button>
+      <button id="deleteData" onclick="deleteData()">삭제</button>
+    </div>
+    <div>
+      <h2>목록 결과</h2>
+    </div>
+
+    <script>
+      /*
+        1. 조회
+        2. 생성
+        3. 수정
+        4. 삭제
+        5. render : push, join, innerHTML
+        6. clear
+      */
+      // 1. 조회
+      const url = 'http://localhost:3000/';
+      function getData() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.setRequestHeader('content-type', 'application/json');
+        // xhr.send();
+        xhr.onload = () => {
+          if ((xhr.status = 200)) {
+            const result = JSON.parse(xhr.response);
+            console.log(result); // 출력 => rendering
+          } else {
+            console.log('error 발생');
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      }
+    </script>
+  </body>
+</html>

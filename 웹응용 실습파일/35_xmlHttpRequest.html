@@ -9,26 +9,26 @@
     <script>
       // xmlHttpRequest 객체를 이용해서 db를 조회
       // 1. 객체 생성
-      function getPosts() {
-        const xhr = new XMLHttpRequest();
-        // 2. 요청 보낼 준비
-        xhr.open('GET', 'http://localhost:3000/posts');
-        // 3. 컨텐츠 타입 설정
-        xhr.setRequestHeader('content-type', 'application/json');
-        // 4. 요청 전송
-        xhr.send();
-        // 5. 응답 (response) 함수
-        xhr.onload = () => {
-          if (xhr.status == 200) {
-            // get의 성공 상태 : 200
-            const result = JSON.parse(xhr.response);
-            console.log(result);
-          } else {
-            console.log('error 발생');
-            console.log(xhr.status, xhr.statusText);
-          }
-        };
-      }
+      // function getPosts() {
+      //   const xhr = new XMLHttpRequest();
+      //   // 2. 요청 보낼 준비
+      //   xhr.open('GET', 'http://localhost:3000/posts');
+      //   // 3. 컨텐츠 타입 설정
+      //   xhr.setRequestHeader('content-type', 'application/json');
+      //   // 4. 요청 전송
+      //   xhr.send();
+      //   // 5. 응답 (response) 함수
+      //   xhr.onload = () => {
+      //     if (xhr.status == 200) {
+      //       // get의 성공 상태 : 200
+      //       const result = JSON.parse(xhr.response);
+      //       console.log(result);
+      //     } else {
+      //       console.log('error 발생');
+      //       console.log(xhr.status, xhr.statusText);
+      //     }
+      //   };
+      // }
 
       function getComments() {
         const xhr = new XMLHttpRequest();
@@ -46,18 +46,18 @@
         };
       }
 
-      getPosts();
-      getComments();
+      // getComments();
 
+      const url = 'http://localhost:3000/';
       function getData(target) {
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://localhost:3000/' + target);
+        xhr.open('GET', url + target);
         xhr.setRequestHeader('content-type', 'application/json');
-        xhr.send();
+        // xhr.send();
         xhr.onload = () => {
           if ((xhr.status = 200)) {
             const result = JSON.parse(xhr.response);
-            console.log(result);
+            console.log(result);// 출력 => rendering
           } else {
             console.log('error 발생');
             console.log(xhr.status, xhr.statusText);
@@ -65,10 +65,97 @@
         };
       }
 
+      // 2. xmlHttpRequest 객체를 이용해서 db를 생성
+      const postData = (target) => {
+        // 1. 객체 생성
+        const xhr = new XMLHttpRequest();
+        // 2. 요청 보낼 준비
+        xhr.open('POST', url + target);
+        // 3. 컨텐츠 타입 설정
+        xhr.setRequestHeader('content-type', 'application/json:charset=utf-8');
+
+        // 여기에서 id를 안쓰는 이유는 json이 알아서 생성함.
+        const newData = { title: '2학년1반', views: 10 };
+
+        // 4. 요청 (request) 전송
+        xhr.send(JSON.stringify(newData));
+        // 5. 응답 (response) 함수
+        xhr.onload = () => {
+          if ((xhr.status = 200)) {
+            const result = JSON.parse(xhr.response);
+            console.log(result);// 출력 => rendering
+          } else {
+            console.log('error 발생');
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      };
+
+      // 3. xmlHttpRequest 객체를 이용해서 db를 수정
+      const putData = (target, id) => {
+        // 1. 객체 생성
+        const xhr = new XMLHttpRequest();
+        // 2. 요청 보낼 준비
+        xhr.open('DELETE', url + target + '/' + id);
+        // 3. 컨텐츠 타입 설정
+        xhr.setRequestHeader('content-type', 'application/json:charset=utf-8');
+
+        // 여기에서 id를 안쓰는 이유는 json이 알아서 생성함.
+        const updateData = { title: '2학년2반', views: 10000 };
+        // 4. 요청 (request) 전송
+        xhr.send();
+        // 5. 응답 (response) 함수
+        xhr.onload = () => {
+          if ((xhr.status = 200)) {
+            // put
+            const result = JSON.parse(xhr.response);
+            console.log(result); // 출력 => rendering
+          } else {
+            console.log('error 발생');
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      };
+
+      // 4. xmlHttpRequest 객체를 이용해서 db를 삭제
+      const deleteData = (target, id) => {
+        // 1. 객체 생성
+        const xhr = new XMLHttpRequest();
+        // 2. 요청 보낼 준비
+        xhr.open('PUT', url + target + '/' + id);
+        // 3. 컨텐츠 타입 설정
+        xhr.setRequestHeader('content-type', 'application/json:charset=utf-8');
+
+        // 4. 요청 (request) 전송
+        xhr.send(JSON.stringify(updateData));
+        // 5. 응답 (response) 함수
+        xhr.onload = () => {
+          if ((xhr.status = 200)) {
+            // put
+            const result = JSON.parse(xhr.response);
+            console.log(result);// 출력 => rendering
+          } else {
+            console.log('error 발생');
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      };
+
+      // getPosts(); // post 조회
       getData('posts');
       getData('comments');
-      getData('hayun'); 
-      
+      getData('profile');
+      getData('something');
+      postData('posts');
+      putData('posts', '1');
+      deleteData('posts', '1');
+      /*
+      단점 
+        1. 비동기 통신이므로 js의 실행 순서가 반드시 보장되지 않는다.
+          => send() 실행 후 결과 리턴을 기다리지 않고 다른 명령을 실행한다.
+        2. 결과의 화면 rendering을 재활용하기 어렵다. (조금 불편하다)
+        3. undefined 결과
+      */
     </script>
   </body>
 </html>

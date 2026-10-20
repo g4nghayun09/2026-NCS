@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>강하윤</title>
+  </head>
+  <body>
+    <script> 
+      const url = 'http://localhost:3000/';
+      function getData(target) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url + target);
+        xhr.setRequestHeader('content-type', 'application/json');
+        xhr.send();
+        xhr.onload = () => {
+          if ((xhr.status = 200)) {
+            const result = JSON.parse(xhr.response);
+            console.log(result); // 출력 => rendering
+
+            return result;
+          } else {
+            console.log('error 발생');
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      }
+
+      const data = getData('posts');
+      console.log(data);
+  
+      /*
+      단점 
+        1. 비동기 통신이므로 js의 실행 순서가 반드시 보장되지 않는다.
+          => send() 실행 후 결과 리턴을 기다리지 않고 다른 명령을 실행한다.
+        2. 결과의 화면 rendering을 재활용하기 어렵다. (조금 불편하다)
+      */
+    </script>
+  </body>
+</html>

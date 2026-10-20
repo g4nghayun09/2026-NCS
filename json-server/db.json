@@ -1,14 +1,210 @@
 {
-  "$schema": "./node_modules/json-server/schema.json",
   "posts": [
-    { "id": "1", "title": "a title", "views": 100 },
-    { "id": "2", "title": "another title", "views": 200 }
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "ypEIp4pkXK4"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "5IOjAx7fCc4"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "FKWJBF1WzC0"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "Y6lODAujsI8"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "dgx_tQVc_wo"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "Xmpc7xwthPM"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "74ff66p7EZA"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "0QCS4jBpzUY"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "TvtDaKXDkYM"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "KtakEGRXl0E"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "60uOA2jNQOo"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "ikEUgsjqRj4"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "H-DTTzLLUVk"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "HbmT31BrTXY"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "y6Dt5W3bVMM"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "6URJy3xm-Ss"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "0MDpHmzE3GY"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "gh_NJOY5e5E"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "faiZ02AArMM"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "LcFTSZYuOZg"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "0aG4EV2buJY"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "93hpcVYQSFk"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "aXuYxRq5gOA"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "0gvK1XbQns8"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "Yi7qdnPeTx8"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "daW_ZQ0FtFA"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "qmP_GOxspCQ"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "lQbcqJ-_cp4"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "T1ikXMQHIuk"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "1taD59E-rIo"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "_4SkD0o0SBU"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "KLItpBOzqYc"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "CF0zTQOhYPI"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "Nwk-iBley6Y"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "e_XjVIls6ec"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "Z4K3JPtylro"
+    },
+    {
+      "title": "2학년1반",
+      "views": 10,
+      "id": "f5b8d2ThfzA"
+    }
   ],
   "comments": [
-    { "id": "1", "text": "a comment about post 1", "postId": "1" },
-    { "id": "2", "text": "another comment about post 1", "postId": "1" }
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": null
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": null
+    }
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "$schema": "./node_modules/json-server/schema.json"
 }
