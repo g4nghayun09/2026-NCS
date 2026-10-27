@@ -9,26 +9,26 @@
     <script>
       // xmlHttpRequest 객체를 이용해서 db를 조회
       // 1. 객체 생성
-      // function getPosts() {
-      //   const xhr = new XMLHttpRequest();
-      //   // 2. 요청 보낼 준비
-      //   xhr.open('GET', 'http://localhost:3000/posts');
-      //   // 3. 컨텐츠 타입 설정
-      //   xhr.setRequestHeader('content-type', 'application/json');
-      //   // 4. 요청 전송
-      //   xhr.send();
-      //   // 5. 응답 (response) 함수
-      //   xhr.onload = () => {
-      //     if (xhr.status == 200) {
-      //       // get의 성공 상태 : 200
-      //       const result = JSON.parse(xhr.response);
-      //       console.log(result);
-      //     } else {
-      //       console.log('error 발생');
-      //       console.log(xhr.status, xhr.statusText);
-      //     }
-      //   };
-      // }
+      function getPosts() {
+        const xhr = new XMLHttpRequest();
+        // 2. 요청 보낼 준비
+        xhr.open('GET', 'http://localhost:3000/posts');
+        // 3. 컨텐츠 타입 설정
+        xhr.setRequestHeader('content-type', 'application/json');
+        // 4. 요청 전송
+        xhr.send();
+        // 5. 응답 (response) 함수
+        xhr.onload = () => {
+          if (xhr.status == 200) {
+            // get의 성공 상태 : 200
+            const result = JSON.parse(xhr.response);
+            console.log(result);
+          } else {
+            console.log('error 발생');
+            console.log(xhr.status, xhr.statusText);
+          }
+        };
+      }
 
       function getComments() {
         const xhr = new XMLHttpRequest();
@@ -103,7 +103,7 @@
         // 여기에서 id를 안쓰는 이유는 json이 알아서 생성함.
         const updateData = { title: '2학년2반', views: 10000 };
         // 4. 요청 (request) 전송
-        xhr.send();
+        xhr.send(updateData);
         // 5. 응답 (response) 함수
         xhr.onload = () => {
           if ((xhr.status = 200)) {

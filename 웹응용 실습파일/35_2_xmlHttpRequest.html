@@ -1,57 +1,110 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Post 데이터 관리</title>
-  </head>
-  <body>
-    <div>
-      <h1>Post 데이터 관리</h1>
-    </div>
 
-    <div>
-      <input type="text" name="" id="id" placeholder="ID" />
-      <input type="text" name="" id="title" placeholder="Title" />
-      <input type="text" name="" id="view" placeholder="VIEWS" />
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post 데이터 관리</title>
+</head>
 
-    <div>
-      <button id="getData" onclick="getData()">조회</button>
-      <button id="addData" onclick="addData()">추가</button>
-      <button id="updateData" onclick="updateData()">수정</button>
-      <button id="deleteData" onclick="deleteData()">삭제</button>
-    </div>
-    <div>
-      <h2>목록 결과</h2>
-    </div>
+<body>
+  <div>
+    <h1>Post 데이터 관리</h1>
+  </div>
 
-    <script>
-      /*
-        1. 조회
-        2. 생성
-        3. 수정
-        4. 삭제
-        5. render : push, join, innerHTML
-        6. clear
-      */
-      // 1. 조회
-      const url = 'http://localhost:3000/';
-      function getData() {
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', url);
-        xhr.setRequestHeader('content-type', 'application/json');
-        // xhr.send();
-        xhr.onload = () => {
-          if ((xhr.status = 200)) {
-            const result = JSON.parse(xhr.response);
-            console.log(result); // 출력 => rendering
-          } else {
-            console.log('error 발생');
-            console.log(xhr.status, xhr.statusText);
-          }
-        };
+  <div>
+    <input type="text" name="" id="id" placeholder="ID" />
+    <input type="text" name="" id="title" placeholder="Title" />
+    <input type="text" name="" id="view" placeholder="VIEWS" />
+  </div>
+
+  <div>
+    <button id="getData" onclick="getData()">조회</button>
+    <button id="addData" onclick="addData(id, title, view)">추가</button>
+    <button id="updateData" onclick="updateData()">수정</button>
+    <button id="deleteData" onclick="deleteData()">삭제</button>
+  </div>
+  <div>
+    <h2>목록 결과</h2>
+    <div id="detail"></div>
+  </div>
+
+  <script>
+    /*
+      1. 조회 : getData() : 전체 목록 조회
+      2. 생성 : addData() : id(o, x), 나머지는 유효성 확인, 즉시 반영
+      3. 수정 : updateData() : id(o, x), 나머지는 유효성 확인, 즉시 반영
+      4. 삭제 : deleteData() : id 유효성 확인 
+      5. render : rendering() : text, ul, table... => push, join, innerHTML
+      6. clear : clear() : 동작 후 입력폼 클리어
+    */
+    // --------------------------------------------- 1. 조회 --------------------------------------------- 
+    const url = 'http://localhost:3000/';
+    function getData() {
+      const xhr = new XMLHttpRequest();
+      // 2. 요청 보낼 준비
+      xhr.open('GET', 'http://localhost:3000/posts');
+      // 3. 컨텐츠 타입 설정
+      xhr.setRequestHeader('content-type', 'application/json');
+      // 4. 요청 전송
+      xhr.send();
+      // 5. 응답 (response) 함수
+      xhr.onload = () => {
+        if (xhr.status == 200) {
+          // get의 성공 상태 : 200
+          console.log(xhr)
+          rendering(xhr);
+        } else {
+          console.log('error 발생');
+          console.log(xhr.status, xhr.statusText);
+        }
+      };
+    }
+    // --------------------------------------------- 2. 생성 --------------------------------------------- 
+    function addData(id, title, view) {
+      const Id = document.getElementById("id").value;
+      const Title = document.getElementById("title").value;
+      const View = document.getElementById("view").value;
+      // 1. 객체 생성
+      const xhr = new XMLHttpRequest();
+      // 2. 요청 보낼 준비
+      xhr.open('POST', url + "posts");
+      // 3. 컨텐츠 타입 설정
+      xhr.setRequestHeader('content-type', 'application/json:charset=utf-8');
+
+      // 여기에서 id를 안쓰는 이유는 json이 알아서 생성함.
+      
+      let newData = {};
+      if (id) {
+        newData = { title: Title, views: View, id: Id };
       }
-    </script>
-  </body>
+      else {
+        newData = { title: Title, views: View };
+      }
+      // 4. 요청 (request) 전송
+      xhr.send(JSON.stringify(newData));
+      // 5. 응답 (response) 함수
+      xhr.onload = () => {
+        if ((xhr.status = 200)) {
+          console.log(xhr)
+          getData();
+        } else {
+          console.log('error 발생');
+          console.log(xhr.status, xhr.statusText);
+        }
+      };
+    };
+    // --------------------------------------------- 5. render --------------------------------------------- 
+    function rendering(xhr) {
+      const arr = JSON.parse(xhr.response);
+      let str = "";
+      for (let x of arr) {
+        str += "<p> <strong> id : </strong>" + x.id + "<strong> title : </strong>" + x.title + "<strong> views : </strong>" + x.views + "</p> <br>";
+      }
+      document.getElementById('detail').innerHTML = str;
+    }
+
+  </script>
+</body>
+
 </html>
